@@ -5,77 +5,191 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>glitchte // Home</title>
     <style>
-        /* Cybercore & Glitch Shared Base Styling */
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #0a0512;
-            color: #e0d5f0;
+        :root {
+            --bg-base: #0a0512;
+            --bg-surface: #11081f;
+            --text-primary: #f0e6fc;
+            --text-secondary: #a89bb9;
+            --accent-cyan: #00ffff;
+            --accent-pink: #ff0055;
+            --accent-purple: #9d00ff;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-image: linear-gradient(rgba(18, 10, 36, 0.3) 50%, rgba(0, 0, 0, 0.5) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 255, 0.03), rgba(0, 0, 255, 0.03));
-            background-size: 100% 4px, 6px 100%;
         }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            /* Subtle, professional grid overlay instead of harsh scanlines */
+            background-image: 
+                linear-gradient(rgba(157, 0, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(157, 0, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Typography */
+        h1, h2, nav a, .btn-main, .mono-text {
+            font-family: var(--font-mono);
+        }
+
+        /* Navigation */
         nav {
-            background-color: #06020c;
-            border-bottom: 2px solid #9d00ff;
-            padding: 15px 20px;
-            text-align: center;
+            background-color: rgba(6, 2, 12, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(157, 0, 255, 0.3);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+
         nav a {
-            color: #00ffff;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            transition: var(--transition-smooth);
+            position: relative;
         }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-pink);
+            transition: var(--transition-smooth);
+        }
+
         nav a:hover, nav a.active {
-            color: #ff0055;
-            text-shadow: 0 0 8px rgba(255, 0, 85, 0.6);
+            color: var(--accent-cyan);
         }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Header */
         header {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(180deg, #120124 0%, #0a0512 100%);
-            border-bottom: 3px solid #ff0055;
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--bg-surface) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.2);
         }
+
         header h1 {
-            margin: 0;
-            font-size: 3rem;
-            color: #00ffff;
+            font-size: 3.5rem;
+            color: var(--text-primary);
             text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px #ff0055, -2px -2px #9d00ff;
+            letter-spacing: 6px;
+            margin-bottom: 0.5rem;
+            /* Refined, sharper text shadow for glitch effect */
+            text-shadow: 2px 0px var(--accent-pink), -2px 0px var(--accent-cyan);
         }
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+
+        header p {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
             text-align: center;
         }
+
+        main h2 {
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        main p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
         .btn-main {
             display: inline-block;
-            background: #ff0055;
-            color: #ffffff;
-            padding: 12px 30px;
-            font-size: 1.1rem;
+            background: transparent;
+            color: var(--accent-cyan);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
             text-decoration: none;
             text-transform: uppercase;
-            border: 2px solid #00ffff;
-            box-shadow: 3px 3px 0px #9d00ff;
-            margin: 15px;
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 4px 4px 0px rgba(157, 0, 255, 0.5);
+            transition: var(--transition-smooth);
+            cursor: pointer;
         }
+
+        .btn-main.primary {
+            background: var(--accent-pink);
+            color: var(--bg-base);
+            border-color: var(--accent-pink);
+            box-shadow: 4px 4px 0px rgba(0, 255, 255, 0.5);
+        }
+
         .btn-main:hover {
-            box-shadow: 0px 0px 0px #9d00ff;
-            transform: translate(3px, 3px);
-            background: #9d00ff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px rgba(157, 0, 255, 0.8);
+            background: rgba(0, 255, 255, 0.1);
         }
+
+        .btn-main.primary:hover {
+            box-shadow: 2px 2px 0px rgba(0, 255, 255, 0.8);
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            background-color: #06020c;
-            border-top: 3px solid #00ffff;
-            margin-top: 60px;
+            padding: 2rem;
+            background-color: var(--bg-surface);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 4rem;
         }
     </style>
 </head>
@@ -91,20 +205,22 @@
 
     <header>
         <h1>glitchte</h1>
-        <p>// MULTIMEDIA DIGITAL ARTIST // DESIGN HUB</p>
+        <p class="mono-text">// MULTIMEDIA DIGITAL ARTIST // DESIGN HUB</p>
     </header>
 
-    <div class="container">
+    <main>
         <h2>[// WELCOME_TO_THE_VOID]</h2>
         <p>I create premium high-tier Minecraft 3D renders, custom user profile pictures, high-CTR media thumbnails, and custom hand-drawn vector logos.</p>
         <p>Explore my database branches below to view my works or initiate a contract build.</p>
         
-        <a href="showcase.html" class="btn-main">View Showcase</a>
-        <a href="commissions.html" class="btn-main">Get Commission Info</a>
-    </div>
+        <div class="btn-group">
+            <a href="showcase.html" class="btn-main primary">View Showcase</a>
+            <a href="commissions.html" class="btn-main">Get Commission Info</a>
+        </div>
+    </main>
 
     <footer>
-        <p>© 2026 glitchte. All rights encrypted.</p>
+        <p class="mono-text">© 2026 glitchte. All rights encrypted.</p>
     </footer>
 
 </body>
