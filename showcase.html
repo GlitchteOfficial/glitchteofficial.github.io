@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>glitchte // Showcase</title>
+    <!-- We link the same core styling properties here -->
+    <style>
+        /* (Re-use the CSS rules from above for uniform styling) */
+        body { font-family: 'Courier New', monospace; background-color: #0a0512; color: #e0d5f0; margin: 0; padding: 0; background-image: linear-gradient(rgba(18, 10, 36, 0.3) 50%, rgba(0, 0, 0, 0.5) 50%); background-size: 100% 4px; }
+        nav { background-color: #06020c; border-bottom: 2px solid #9d00ff; padding: 15px 20px; text-align: center; }
+        nav a { color: #00ffff; text-decoration: none; margin: 0 15px; text-transform: uppercase; }
+        nav a:hover, nav a.active { color: #ff0055; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        h2 { border-bottom: 2px dashed #9d00ff; padding-bottom: 10px; color: #00ffff; text-transform: uppercase; }
+        
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background-color: #110722; border: 2px solid #9d00ff; border-radius: 4px; overflow: hidden; }
+        .card:hover { border-color: #00ffff; box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); }
+        .card img { width: 100%; height: 220px; object-fit: cover; border-bottom: 2px solid #ff0055; }
+        .card-info { padding: 15px; background: #0d041a; }
+        .card-info h3 { margin: 0; color: #e0d5f0; }
+        .card-info p { margin: 5px 0 0 0; color: #ff0055; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="showcase.html" class="active">Showcase</a>
+        <a href="commissions.html">Commissions</a>
+        <a href="tos.html">TOS</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="container">
+        <h2>[// ARTWORK_ARCHIVE]</h2>
+        <div class="gallery">
+            <div class="card"><img src="render1.png"><div class="card-info"><h3>3D Render #1</h3><p>Blender Art</p></div></div>
+            <div class="card"><img src="logo1.png"><div class="card-info"><h3>Drawn Mascot</h3><p>Vector Art</p></div></div>
+            <div class="card"><img src="thumbnail1.png"><div class="card-info"><h3>Thumbnail Concept</h3><p>Photoshop</p></div></div>
+        </div>
+    </div>
+</body>
+</html>
