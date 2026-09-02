@@ -2,10 +2,166 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My GitHub Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Portfolio</title>
+    <style>
+        /* Base Dark Theme styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #00ffcc;
+        }
+        header p {
+            color: #aaaaaa;
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h2 {
+            border-bottom: 2px solid #00ffcc;
+            padding-bottom: 10px;
+            color: #00ffcc;
+        }
+        /* Gallery Grid Layout */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #333; /* Placeholder color */
+        }
+        .card-info {
+            padding: 15px;
+        }
+        .card-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+        }
+        .card-info p {
+            margin: 0;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        /* Rates / Info Section */
+        .rates {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .rate-box {
+            flex: 1;
+            min-width: 220px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00ffcc;
+        }
+        /* Footer / Contact */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #1a1a1a;
+            color: #888;
+        }
+        footer a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my brand new website hosted on GitHub Pages.</p>
+
+    <header>
+        <h1>My Creative Portfolio</h1>
+        <p>Custom Minecraft Renders • Thumbnails • PFPs • Hand-Drawn Logos</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Showcase Gallery -->
+        <h2>My Work</h2>
+        <div class="gallery">
+            <!-- Item 1 -->
+            <div class="card">
+                <!-- Replace 'render1.png' with your actual file names uploaded to GitHub -->
+                <img src="render1.png" alt="Minecraft Render">
+                <div class="card-info">
+                    <h3>Minecraft 3D Render</h3>
+                    <p>Blender & Photoshop</p>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="card">
+                <img src="logo1.png" alt="Drawn Logo">
+                <div class="card-info">
+                    <h3>Hand-Drawn Mascot Logo</h3>
+                    <p>Vector Illustration</p>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="card">
+                <img src="thumbnail1.png" alt="YouTube Thumbnail">
+                <div class="card-info">
+                    <h3>YouTube Video Thumbnail</h3>
+                    <p>High CTR Concept</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing & Commissions -->
+        <h2>Commission Rates</h2>
+        <div class="rates">
+            <div class="rate-box">
+                <h3>Profile Pictures / Avatars</h3>
+                <p>Starting at $XX</p>
+            </div>
+            <div class="rate-box">
+                <h3>YouTube Thumbnails</h3>
+                <p>Starting at $XX</p>
+            </div>
+            <div class="rate-box">
+                <h3>Custom Drawn Logos</h3>
+                <p>Starting at $XX</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Interested in working together? Reach out on Discord: <strong>YourTag#0000</strong> or Twitter/X <a href="#">@YourHandle</a></p>
+    </footer>
+
 </body>
 </html>
