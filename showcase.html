@@ -3,27 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>glitchte // Showcase</title>
-    <!-- We link the same core styling properties here -->
+    <title>Glitchte's Portfolio | Showcase</title>
     <style>
-        /* (Re-use the CSS rules from above for uniform styling) */
-        body { font-family: 'Courier New', monospace; background-color: #0a0512; color: #e0d5f0; margin: 0; padding: 0; background-image: linear-gradient(rgba(18, 10, 36, 0.3) 50%, rgba(0, 0, 0, 0.5) 50%); background-size: 100% 4px; }
-        nav { background-color: #06020c; border-bottom: 2px solid #9d00ff; padding: 15px 20px; text-align: center; }
-        nav a { color: #00ffff; text-decoration: none; margin: 0 15px; text-transform: uppercase; }
-        nav a:hover, nav a.active { color: #ff0055; }
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        h2 { border-bottom: 2px dashed #9d00ff; padding-bottom: 10px; color: #00ffff; text-transform: uppercase; }
-        
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background-color: #110722; border: 2px solid #9d00ff; border-radius: 4px; overflow: hidden; }
-        .card:hover { border-color: #00ffff; box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); }
-        .card img { width: 100%; height: 220px; object-fit: cover; border-bottom: 2px solid #ff0055; }
-        .card-info { padding: 15px; background: #0d041a; }
-        .card-info h3 { margin: 0; color: #e0d5f0; }
-        .card-info p { margin: 5px 0 0 0; color: #ff0055; font-size: 0.9rem; }
+        :root {
+            --bg-base: #0a0512;
+            --text-primary: #ffffff;        /* Pure white for headings and main elements */
+            --text-body: #f4f0ff;           /* Bright, highly legible off-white for body text */
+            --accent-cyan: #00ffff;
+            --accent-pink: #ff0055;
+            --accent-purple: #c060ff;       
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background-color: var(--bg-base);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND OPENING ANIMATION LAYER --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            
+            /* Darkened overlay for max text readability */
+            background-image: 
+                linear-gradient(rgba(5, 2, 10, 0.8), rgba(10, 4, 18, 0.85)),
+                url('background.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            z-index: -1;
+            animation: bgOpenAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes bgOpenAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Typography */
+        h1, h2, h3, nav a, .btn-main, .mono-text {
+            font-family: var(--font-mono);
+        }
+
+        /* Animations */
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(6, 2, 12, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(157, 0, 255, 0.3);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-pink);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-cyan);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Container & Gallery Layout */
+        .container {
+            max-width: 1100px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-purple);
+            border-bottom: 2px dashed rgba(157, 0, 255, 0.4);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+            margin-bottom: 2.5rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: rgba(17, 7, 34, 0.8);
+            backdrop-filter: blur(8px);
+            border: 2px solid var(--accent-purple);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 4px 4px 0px rgba(157, 0, 255, 0.3);
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-pink);
+        }
+
+        .card-info {
+            padding: 1.2rem;
+            background: rgba(13, 4, 26, 0.9);
+        }
+
+        .card-info h3 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .card-info p {
+            margin: 6px 0 0 0;
+            color: var(--accent-pink);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(6, 2, 12, 0.85);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            color: var(--text-body);
+            font-size: 0.9rem;
+            margin-top: 6rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 850px) {
+            .container {
+                margin: 2rem auto;
+            }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="showcase.html" class="active">Showcase</a>
@@ -31,13 +235,37 @@
         <a href="tos.html">TOS</a>
         <a href="contact.html">Contact</a>
     </nav>
+
     <div class="container">
         <h2>[// ARTWORK_ARCHIVE]</h2>
         <div class="gallery">
-            <div class="card"><img src="render1.png"><div class="card-info"><h3>3D Render #1</h3><p>Blender Art</p></div></div>
-            <div class="card"><img src="logo1.png"><div class="card-info"><h3>Drawn Mascot</h3><p>Vector Art</p></div></div>
-            <div class="card"><img src="thumbnail1.png"><div class="card-info"><h3>Thumbnail Concept</h3><p>Photoshop</p></div></div>
+            <div class="card">
+                <img src="render1.png" alt="3D Render Artwork">
+                <div class="card-info">
+                    <h3>3D Render #1</h3>
+                    <p>Blender Art</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="logo1.png" alt="Drawn Mascot Logo">
+                <div class="card-info">
+                    <h3>Drawn Mascot</h3>
+                    <p>Vector Art</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="thumbnail1.png" alt="Thumbnail Concept">
+                <div class="card-info">
+                    <h3>Thumbnail Concept</h3>
+                    <p>Photoshop</p>
+                </div>
+            </div>
         </div>
     </div>
+
+    <footer>
+        <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
