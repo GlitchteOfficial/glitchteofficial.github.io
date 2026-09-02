@@ -31,10 +31,12 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             
-            /* --- BACKGROUND IMAGE & GRADIENT OVERLAY --- */
+            /* --- BACKGROUND GIF & GRADIENT OVERLAY --- */
+            /* I swapped the unsplash image with a cool subtle dark GIF */
+            /* Replace the GIF URL below with your own link or local file (e.g., 'images/my-bg.gif') */
             background-image: 
                 linear-gradient(rgba(10, 5, 18, 0.85), rgba(17, 8, 31, 0.95)),
-                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
+                url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3RnNHM3aW9jM2Mxa2p0YThveWQzbW12ZHQ2OHYwaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lFjU9P51iU529i/giphy.gif');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -193,12 +195,10 @@
             height: auto;
             max-height: 450px;
             object-fit: contain;
-            /* Creates a nice neon glow behind your transparent PNG character */
             filter: drop-shadow(0px 0px 20px rgba(157, 0, 255, 0.4));
             transition: all 0.5s ease;
         }
 
-        /* Cool hover float effect for the character */
         .character-render:hover {
             transform: translateY(-10px);
             filter: drop-shadow(0px 10px 30px rgba(0, 255, 255, 0.5));
@@ -291,7 +291,6 @@
     </header>
 
     <main class="hero-split">
-        <!-- Left Side: Text and Buttons -->
         <div class="hero-text">
             <h2>Welcome to Glitchte's Snazy Workbench!</h2>
             <p>I create premium high-tier Minecraft 3D renders, custom user profile pictures, Minecraft Youtube thumbnails, and custom hand-drawn logos. All for a cheap price!</p>
@@ -303,9 +302,7 @@
             </div>
         </div>
 
-        <!-- Right Side: Character Image -->
         <div class="hero-image">
-            <!-- REPLACE THE src LINK BELOW WITH THE LINK OR FILE PATH TO YOUR CHARACTER RENDER -->
             <img src="https://via.placeholder.com/400x500/11081f/00ffff?text=Place+Character.png+Here" alt="Glitchte Character Pointing" class="character-render">
         </div>
     </main>
