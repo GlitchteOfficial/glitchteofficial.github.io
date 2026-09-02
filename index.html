@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>glitchte | Home</title>
+    <title>Glitchte's Portfolio | Home</title>
     <style>
         :root {
             --bg-base: #0a0512;
@@ -32,6 +32,8 @@
             -webkit-font-smoothing: antialiased;
             
             /* --- BACKGROUND IMAGE & GRADIENT OVERLAY --- */
+            /* The linear-gradient acts as a dark tint so your text stays readable */
+            /* Replace the URL with a link to your own artwork or background */
             background-image: 
                 linear-gradient(rgba(10, 5, 18, 0.85), rgba(17, 8, 31, 0.95)),
                 url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
@@ -118,12 +120,153 @@
         header {
             text-align: center;
             padding: 6rem 2rem;
-            background: linear-gradient(180deg,I can't actually see your code yet, but I can definitely help you match those colors if you paste it here. 
+            background: linear-gradient(180deg, rgba(17, 8, 31, 0.5) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.15);
+        }
 
-Depending on what language or tool you're working with, here is exactly what you should look for in your code to make them the same:
+        header h1 {
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 0px var(--accent-pink), -2px 0px var(--accent-cyan);
+            
+            opacity: 0;
+            animation: fadeDown 0.8s ease 0.2s forwards;
+        }
 
-*   **HTML/CSS (Websites):** Look for properties like `background-color: #FF5733;` or `color: blue;`. Find the code for the color you want to keep, copy that exact value (the word or the # code), and paste it onto the other element.
-*   **JavaScript (React or Charting Libraries):** Look for `style={{ color: '...' }}` or a `backgroundColor` property in your options. 
-*   **Python (Matplotlib, Seaborn, etc.):** Look for a `color=` or `c=` parameter inside your plot function (e.g., `plt.plot(x, y, color='red')`). 
+        header p {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeDown 0.8s ease 0.4s forwards;
+        }
 
-Just copy and paste the snippet of code you are looking at right into our chat, and tell me which things you want to match. I'll point out the exact line to change!
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        main h2 {
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        main p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.8s forwards;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1s forwards;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: rgba(10, 5, 18, 0.5);
+            backdrop-filter: blur(4px);
+            color: var(--accent-cyan);
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 1px solid var(--accent-cyan);
+            box-shadow: 4px 4px 0px rgba(157, 0, 255, 0.5);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .btn-main.primary {
+            background: var(--accent-pink);
+            color: var(--bg-base);
+            border-color: var(--accent-pink);
+            box-shadow: 4px 4px 0px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn-main:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px rgba(157, 0, 255, 0.8);
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .btn-main.primary:hover {
+            box-shadow: 2px 2px 0px rgba(0, 255, 255, 0.8);
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(6, 2, 12, 0.7);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+            
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="commissions.html">Commissions</a>
+        <a href="tos.html">TOS</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header>
+        <h1>glitchte</h1>
+        <p class="mono-text">MULTIMEDIA DIGITAL ARTIST • DESIGN HUB</p>
+    </header>
+
+    <main>
+        <h2>Welcome to Glitchte's Snazy Workbench!</h2>
+        <p>I create premium high-tier Minecraft 3D renders, custom user profile pictures, Minecraft Youtube thumbnails, and custom hand-drawn logos. All for a cheap price!</p>
+        <p>Explore my portfolio below to view my works or initiate a commision.</p>
+        
+        <div class="btn-group">
+            <a href="showcase.html" class="btn-main">View Showcase</a>
+            <a href="commissions.html" class="btn-main">Get Commission Info</a>
+        </div>
+    </main>
+
+    <footer>
+        <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
