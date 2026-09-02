@@ -30,18 +30,43 @@
             color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            background-color: var(--bg-base);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND OPENING ANIMATION LAYER --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             
-            /* --- BACKGROUND GIF & LIGHTER GRADIENT OVERLAY --- */
+            /* Background GIF combined with your dark gradient overlay */
             background-image: 
                 linear-gradient(rgba(10, 5, 18, 0.65), rgba(17, 8, 31, 0.75)),
                 url('background.gif');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             background-repeat: no-repeat;
             
-            background-color: var(--bg-base);
-            overflow-x: hidden;
+            z-index: -1; /* Keeps it strictly behind all your content */
+            
+            /* Opening Animation: Fades in and slowly zooms out from a slight initial zoom */
+            animation: bgOpenAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes bgOpenAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Typography */
@@ -289,6 +314,7 @@
     </header>
 
     <main class="hero-split">
+        <!-- Left Side: Text and Buttons -->
         <div class="hero-text">
             <h2>Welcome to Glitchte's Snazy Workbench!</h2>
             <p>I create premium high-tier Minecraft 3D renders, custom user profile pictures, Minecraft Youtube thumbnails, and custom hand-drawn logos. All for a cheap price!</p>
@@ -300,6 +326,7 @@
             </div>
         </div>
 
+        <!-- Right Side: Character Image -->
         <div class="hero-image">
             <img src="character.png" alt="Glitchte Character Pointing" class="character-render">
         </div>
