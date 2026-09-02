@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>glitchte | Home</title>
+    <title>Glitchte's Portfolio | Home</title>
     <style>
         :root {
             --bg-base: #0a0512;
-            --bg-surface: #11081f;
+            --bg-surface: rgba(17, 8, 31, 0.7);
             --text-primary: #f0e6fc;
             --text-secondary: #a89bb9;
             --accent-cyan: #00ffff;
@@ -27,14 +27,23 @@
 
         body {
             font-family: var(--font-sans);
-            background-color: var(--bg-base);
             color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            
+            /* --- BACKGROUND IMAGE & GRADIENT OVERLAY --- */
+            /* The linear-gradient acts as a dark tint so your text stays readable */
+            /* Replace the URL with a link to your own artwork or background */
             background-image: 
-                linear-gradient(rgba(157, 0, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(157, 0, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(10, 5, 18, 0.85), rgba(17, 8, 31, 0.95)),
+                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
+            /* Fallback color */
+            background-color: var(--bg-base);
         }
 
         /* Typography */
@@ -42,10 +51,27 @@
             font-family: var(--font-mono);
         }
 
+        /* Animations */
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         /* Navigation */
         nav {
-            background-color: rgba(6, 2, 12, 0.95);
-            backdrop-filter: blur(10px);
+            background-color: rgba(6, 2, 12, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(157, 0, 255, 0.3);
             padding: 1.2rem 2rem;
             display: flex;
@@ -54,6 +80,8 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            
+            animation: fadeIn 1s ease forwards;
         }
 
         nav a {
@@ -92,8 +120,8 @@
         header {
             text-align: center;
             padding: 6rem 2rem;
-            background: linear-gradient(180deg, var(--bg-surface) 0%, transparent 100%);
-            border-bottom: 1px solid rgba(255, 0, 85, 0.2);
+            background: linear-gradient(180deg, rgba(17, 8, 31, 0.5) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.15);
         }
 
         header h1 {
@@ -103,13 +131,17 @@
             letter-spacing: 6px;
             margin-bottom: 0.5rem;
             text-shadow: 2px 0px var(--accent-pink), -2px 0px var(--accent-cyan);
+            
+            opacity: 0;
+            animation: fadeDown 0.8s ease 0.2s forwards;
         }
 
         header p {
             color: var(--accent-cyan);
             font-size: 1rem;
             letter-spacing: 2px;
-            opacity: 0.9;
+            opacity: 0;
+            animation: fadeDown 0.8s ease 0.4s forwards;
         }
 
         /* Main Content */
@@ -126,6 +158,9 @@
             margin-bottom: 1.5rem;
             letter-spacing: 1px;
             text-transform: uppercase;
+            
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.6s forwards;
         }
 
         main p {
@@ -135,6 +170,9 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.8s forwards;
         }
 
         /* Buttons */
@@ -144,11 +182,15 @@
             gap: 1.5rem;
             margin-top: 3rem;
             flex-wrap: wrap;
+            
+            opacity: 0;
+            animation: fadeUp 0.8s ease 1s forwards;
         }
 
         .btn-main {
             display: inline-block;
-            background: transparent;
+            background: rgba(10, 5, 18, 0.5);
+            backdrop-filter: blur(4px);
             color: var(--accent-cyan);
             padding: 0.8rem 2rem;
             font-size: 1rem;
@@ -184,11 +226,15 @@
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: var(--bg-surface);
+            background-color: rgba(6, 2, 12, 0.7);
+            backdrop-filter: blur(10px);
             border-top: 1px solid rgba(0, 255, 255, 0.2);
             color: var(--text-secondary);
             font-size: 0.9rem;
             margin-top: 4rem;
+            
+            opacity: 0;
+            animation: fadeIn 1s ease 1.2s forwards;
         }
     </style>
 </head>
