@@ -3,20 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>glitchte // TOS</title>
+    <title>Glitchte's Portfolio | Terms of Service</title>
     <style>
-        body { font-family: 'Courier New', monospace; background-color: #0a0512; color: #e0d5f0; margin: 0; }
-        nav { background-color: #06020c; border-bottom: 2px solid #9d00ff; padding: 15px 20px; text-align: center; }
-        nav a { color: #00ffff; text-decoration: none; margin: 0 15px; text-transform: uppercase; }
-        nav a:hover, nav a.active { color: #ff0055; }
-        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-        h2 { border-bottom: 2px dashed #9d00ff; color: #00ffff; text-transform: uppercase; }
-        ol { padding-left: 20px; line-height: 1.6; }
-        li { margin-bottom: 15px; color: #e0d5f0; }
-        strong { color: #ff0055; }
+        :root {
+            --bg-base: #0a0512;
+            --text-primary: #ffffff;        
+            --text-body: #f4f0ff;           
+            --accent-cyan: #00ffff;
+            --accent-pink: #ff0055;
+            --accent-purple: #c060ff;       
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background-color: var(--bg-base);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Background Layer with Opening Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(5, 2, 10, 0.85), rgba(10, 4, 18, 0.9)),
+                url('background.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            animation: bgOpenAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes bgOpenAnimation {
+            0% { opacity: 0; transform: scale(1.08); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Typography */
+        h1, h2, h3, nav a, .btn-main, .mono-text, .tos-number {
+            font-family: var(--font-mono);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(6, 2, 12, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(157, 0, 255, 0.25);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-pink);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-cyan);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Main Container & Layout */
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.3s forwards;
+            width: 100%;
+        }
+
+        .tos-card {
+            background: rgba(13, 6, 26, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            padding: 45px 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .tos-card:hover {
+            border-color: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 255, 255, 0.25);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed rgba(157, 0, 255, 0.4);
+            font-weight: 500;
+        }
+
+        ol {
+            list-style: none;
+            counter-reset: tos-counter;
+        }
+
+        li {
+            counter-increment: tos-counter;
+            margin-bottom: 22px;
+            color: var(--text-body);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        li::before {
+            content: "0" counter(tos-counter) ".";
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        strong {
+            color: var(--accent-pink);
+            font-family: var(--font-mono);
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(6, 2, 12, 0.9);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 255, 255, 0.15);
+            color: var(--text-body);
+            font-size: 0.85rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+            .tos-card {
+                padding: 30px 20px;
+            }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="showcase.html">Showcase</a>
@@ -24,14 +228,25 @@
         <a href="tos.html" class="active">TOS</a>
         <a href="contact.html">Contact</a>
     </nav>
+
     <div class="container">
-        <h2>[// TERMS_OF_SERVICE]</h2>
-        <ol>
-            <li><strong>PAYMENT:</strong> 50% upfront or 100% upfront before work begins via [Your Payment Method].</li>
-            <li><strong>REVISIONS:</strong> Up to X free major revisions during the sketching/draft phase. Additional edits incur small fees.</li>
-            <li><strong>DEADLINES:</strong> Turnaround time is generally X to X days depending on asset complexity.</li>
-            <li><strong>USAGE RIGHTS:</strong> I retain rights to exhibit commissioned art items in my personal display folders. Commercial extensions must be discussed upfront.</li>
-        </ol>
+        <div class="tos-card">
+            <h2>[// TERMS_OF_SERVICE]</h2>
+            <ol>
+                <li><strong>PAYMENT & PRICING:</strong> All commissions are now paid work. Accepted payment methods and currency details will be finalized during your direct consultation. Full or partial upfront deposits may be required before work begins.</li>
+                <li><strong>SCOPE OF WORK:</strong> I specialize in custom Logos, Thumbnails, PFPs, and Renders. Please specify your asset choice clearly (e.g., Main Logo variation, Thumbnail type, or Render setup) when placing your request.</li>
+                <li><strong>REVISIONS:</strong> Minor tweaks and changes are welcomed during the drafting phase. However, large structural redesigns or conceptual turnarounds after completion may incur extra fees or be declined.</li>
+                <li><strong>TURNAROUND & DEADLINES:</strong> Turnaround schedules vary depending on project complexity and my current queue. Estimated completion windows will be provided upon initial arrangement. Please remain patient.</li>
+                <li><strong>COMMUNICATION & REQUEST GUIDELINES:</strong> Keep all discussions clean and respectful. I do not accept projects involving excessively complex armor, mechs, or intricate fantasy creatures. When submitting your Discord request, make sure to use the "Add A Message" feature.</li>
+                <li><strong>REFUND POLICY:</strong> Once a project has entered the active design/rendering phase, refunds are generally not permitted due to the digital and custom nature of the labor.</li>
+                <li><strong>USAGE RIGHTS & SHARING:</strong> I retain full ownership to exhibit commissioned pieces within my personal portfolio and public display folders. When sharing my work externally, you must use the version containing my watermark to protect asset integrity.</li>
+            </ol>
+        </div>
     </div>
+
+    <footer>
+        <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
