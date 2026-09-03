@@ -162,6 +162,15 @@
             font-weight: 500;
         }
 
+        .last-update {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         ol {
             list-style: none;
             counter-reset: tos-counter;
@@ -184,6 +193,11 @@
             font-family: var(--font-mono);
             font-weight: bold;
             font-size: 0.9rem;
+        }
+
+        /* Adjust for double digits starting at 10 */
+        li:nth-child(n+10)::before {
+            content: counter(tos-counter) ".";
         }
 
         strong {
@@ -232,15 +246,17 @@
     <div class="container">
         <div class="tos-card">
             <h2>Terms of Service</h2>
+            <div class="last-update">Last Update: 2026</div>
             <ol>
-                <li><strong>PAYMENT TERMS:</strong> All commission work is paid. Payment methods and details are discussed during direct consultation. Depending on the project size, full upfront payment or a 50% deposit may be required before any design tasks start.</li>
-                <li><strong>SERVICES & SCOPE:</strong> I handle custom paid graphics including Logos, Thumbnails, PFPs, and Renders. Please clearly outline your project details, dimensions, and asset type when opening a ticket or messaging me on Discord.</li>
-                <li><strong>REVISION POLICY:</strong> Minor adjustments and edits are welcome during the initial sketching and drafting phases. However, major conceptual changes, complete redrafts after approval, or excessive revision demands may incur additional fees.</li>
-                <li><strong>TURNAROUND & DEADLINES:</strong> Estimated delivery windows depend heavily on asset complexity and my current workload queue. Please be patient and respectful of my time schedule. Rush delivery requests may be accommodated for an extra fee.</li>
-                <li><strong>CLIENT OWNERSHIP & ARTIST RIGHTS:</strong> Upon full and final payment, you are granted full ownership rights to use, display, and feature your commissioned asset for your personal or channel needs. However, I (Glitchte) retain the perpetual right to showcase, display, and use the completed work in my portfolio, promotional banners, and social media display folders.</li>
-                <li><strong>COMMUNICATION & REQUEST GUIDELINES:</strong> Keep all conversations clean, respectful, and clear. I reserve the right to decline any project involving overly complex armor, mechs, or intricate fantasy creatures. When sending a Discord friend request, you must use the "Add A Message" feature.</li>
-                <li><strong>REFUND & CANCELLATION POLICY:</strong> Once work has officially commenced or drafts have been delivered, refunds are strictly not permitted due to the custom digital nature of the services provided. If I must cancel your project on my end, a full refund of any deposit paid will be issued immediately.</li>
-                <li><strong>SHARING & WATERMARKS:</strong> If you publicly share or display commissioned work created for others (or preview pieces), you must use versions containing my visible watermark to preserve asset integrity and proper artist credit.</li>
+                <li><strong>GENERAL AGREEMENT:</strong> By placing an order with me (Seller) for a custom graphic product (Logos, Thumbnails, PFPs, Renders), you (Customer) agree to be bound by these terms and conditions.</li>
+                <li><strong>PAYMENTS & FEES:</strong> All paid work requires payment per our direct agreement. Orders may require 100% upfront or a split payment (e.g., 50% deposit upfront and the remaining 50% upon sketch/draft approval) before any asset generation begins. Any currency conversion or transfer fees are the sole responsibility of the Customer.</li>
+                <li><strong>PRODUCT DELIVERY:</strong> Completed assets will be delivered digitally via Discord, email, or mutually agreed methods once final payment has been verified. It is the Customer's responsibility to safely store and back up files; I cannot guarantee permanent data storage or file recovery if files are lost on your end.</li>
+                <li><strong>REVISIONS:</strong> Minor edits and tweaks are accepted during the initial drafting phase. Substantial redesigns or excessive revision requests exceeding standard adjustments will require an additional fee before work continues.</li>
+                <li><strong>CLIENT OWNERSHIP & ARTIST RIGHTS:</strong> Upon full and final payment, you are granted complete ownership rights to use your custom asset for your channel and personal content needs. However, I retain the perpetual right to exhibit, display, and use the completed product within my portfolio, showcase pages, and promotional materials.</li>
+                <li><strong>RESTRICTIONS & AI/NFT BAN:</strong> The Customer strictly holds no rights to use any delivered product within blockchain technologies, cryptocurrency ventures, NFTs, or any form of AI datasets, machine learning tools, or future derivative AI technologies.</li>
+                <li><strong>COMMUNICATION & TIMELINES:</strong> Swift and responsive communication is expected. Failure to reply or provide feedback in a timely manner will be treated as implicit approval of the current progress state. Estimated completion schedules depend heavily on queue volume and asset complexity.</li>
+                <li><strong>REFUND & CANCELLATION POLICY:</strong> Due to the custom digital nature of the work, refunds are not issued once active design or rendering phases have commenced. I reserve the right to cancel or decline any order at any time with a full refund.</li>
+                <li><strong>CONDUCT & CONTENT LIMITS:</strong> Disrespectful behavior, harassment, or abusive language will not be tolerated and will result in immediate order cancellation. Additionally, I reserve the right to decline projects involving overly complex elements like intricate mechs or detailed fantasy armor.</li>
             </ol>
         </div>
     </div>
