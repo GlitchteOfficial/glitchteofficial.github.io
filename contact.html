@@ -3,19 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>glitchte // Contact</title>
+    <title>Glitchte's Portfolio | Contact</title>
     <style>
-        body { font-family: 'Courier New', monospace; background-color: #0a0512; color: #e0d5f0; margin: 0; text-align: center;}
-        nav { background-color: #06020c; border-bottom: 2px solid #9d00ff; padding: 15px 20px; }
-        nav a { color: #00ffff; text-decoration: none; margin: 0 15px; text-transform: uppercase; }
-        nav a:hover, nav a.active { color: #ff0055; }
-        .container { max-width: 600px; margin: 60px auto; padding: 0 20px; }
-        .discord-card { background: #110722; border: 2px solid #00ffff; padding: 40px 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0, 255, 255, 0.2); }
-        h2 { color: #ff0055; text-transform: uppercase; letter-spacing: 2px; }
-        .tag { font-size: 2rem; color: #ffffff; font-weight: bold; text-shadow: 0 0 8px #9d00ff; margin: 20px 0; }
+        :root {
+            --bg-base: #0a0512;
+            --text-primary: #ffffff;        
+            --text-body: #f4f0ff;           
+            --accent-cyan: #00ffff;
+            --accent-pink: #ff0055;
+            --accent-purple: #c060ff;       
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        /* Reset & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background-color: var(--bg-base);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- BACKGROUND OPENING ANIMATION LAYER --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            
+            background-image: 
+                linear-gradient(rgba(5, 2, 10, 0.8), rgba(10, 4, 18, 0.85)),
+                url('background.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            z-index: -1;
+            animation: bgOpenAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes bgOpenAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Typography */
+        h1, h2, h3, nav a, .btn-main, .mono-text {
+            font-family: var(--font-mono);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(6, 2, 12, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(157, 0, 255, 0.3);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-pink);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-cyan);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Container & Card */
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 4rem 2rem;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.3s forwards;
+            width: 100%;
+        }
+
+        .discord-card {
+            background-color: rgba(17, 7, 34, 0.85);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--accent-cyan);
+            padding: 40px 30px;
+            border-radius: 4px;
+            box-shadow: 4px 4px 0px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.15);
+            width: 100%;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .discord-card:hover {
+            box-shadow: 4px 4px 0px var(--accent-pink), 0 0 25px rgba(255, 0, 85, 0.3);
+            border-color: var(--accent-pink);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: var(--accent-pink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+        }
+
+        .discord-card p {
+            color: var(--text-body);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            color: var(--text-primary);
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--accent-purple);
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+
+        .status-text {
+            color: var(--accent-cyan) !important;
+            font-family: var(--font-mono);
+            font-size: 0.855rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(6, 2, 12, 0.85);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            color: var(--text-body);
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 650px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="showcase.html">Showcase</a>
@@ -23,13 +226,19 @@
         <a href="tos.html">TOS</a>
         <a href="contact.html" class="active">Contact</a>
     </nav>
+
     <div class="container">
         <div class="discord-card">
             <h2>[// COMMENCE_COMMISSION_PROTOCOL]</h2>
             <p>Send a direct message request on Discord to begin your order project.</p>
             <div class="tag">glitchte</div>
-            <p style="color: #888;">Status: Open for orders</p>
+            <p class="status-text">Status: Open for orders</p>
         </div>
     </div>
+
+    <footer>
+        <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
