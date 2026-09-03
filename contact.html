@@ -30,43 +30,19 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             background-color: var(--bg-base);
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* --- BACKGROUND IMAGE LAYER --- */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            
             background-image: 
                 linear-gradient(rgba(5, 2, 10, 0.85), rgba(10, 4, 18, 0.9)),
                 url('background.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
-            z-index: -1;
-            animation: bgOpenAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        @keyframes bgOpenAnimation {
-            0% {
-                opacity: 0;
-                transform: scale(1.08);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         /* Typography */
@@ -133,9 +109,9 @@
             box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
         }
 
-        /* Container & Refined Card */
+        /* Container & Card Layout */
         .container {
-            max-width: 580px;
+            max-width: 600px;
             margin: auto;
             padding: 2rem;
             display: flex;
@@ -152,9 +128,9 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(192, 96, 255, 0.3);
             border-top: 2px solid var(--accent-purple);
-            padding: 50px 40px;
+            padding: 45px 35px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(192, 96, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             width: 100%;
             text-align: center;
             transition: var(--transition-smooth);
@@ -166,29 +142,37 @@
         }
 
         h2 {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--accent-cyan);
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
             font-weight: 500;
         }
 
         .contact-card p {
             color: var(--text-body);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
+            font-size: 0.92rem;
+            margin-bottom: 1.2rem;
             opacity: 0.9;
         }
 
+        /* Click-to-Copy Handle Box */
         .discord-handle-box {
-            background: rgba(8, 3, 16, 0.6);
-            border: 1px dashed rgba(192, 96, 255, 0.4);
-            padding: 18px;
+            background: rgba(8, 3, 16, 0.7);
+            border: 1px dashed rgba(192, 96, 255, 0.5);
+            padding: 16px;
             border-radius: 6px;
-            margin: 20px 0;
-            display: inline-block;
-            width: 100%;
+            margin: 25px 0 15px 0;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .discord-handle-box:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 255, 255, 0.05);
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
         }
 
         .tag {
@@ -199,12 +183,24 @@
             letter-spacing: 1px;
         }
 
+        /* Copy Feedback Tooltip */
+        .copy-feedback {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            margin-top: 6px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Status Section */
         .status-container {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-top: 1.5rem;
+            margin-top: 1.8rem;
         }
 
         .status-dot {
@@ -213,6 +209,7 @@
             background-color: var(--accent-cyan);
             border-radius: 50%;
             box-shadow: 0 0 8px var(--accent-cyan);
+            flex-shrink: 0;
         }
 
         .status-text {
@@ -221,7 +218,7 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin: 0;
+            margin: 0 !important;
         }
 
         /* Footer */
@@ -244,7 +241,7 @@
                 padding: 1rem;
             }
             .contact-card {
-                padding: 35px 20px;
+                padding: 30px 20px;
             }
         }
     </style>
@@ -261,14 +258,44 @@
 
     <div class="container">
         <div class="contact-card">
-            <h2>Contact me on discord to get a Commision!</h2>
+            <h2>COMMENCE COMMISSION PROTOCOL</h2>
             <p>Send a direct message request on Discord to begin your project layout and consultation.</p>
-            <p>Please use the "Add A Message" feature when sending a Friend Request!</p>
+            <p style="font-size: 0.85rem; opacity: 0.7;">Please use the "Add A Message" feature when sending a Friend Request!</p>
             
-            <div class="discord-handle-box">
-                <div class="tag">glitchte</div>
+            <div class="discord-handle-box" onclick="copyDiscordTag()" title="Click to copy Discord handle">
+                <div class="tag" id="discordTag">glitchte</div>
+                <div class="copy-feedback" id="copyFeedback">[Click box to copy handle]</div>
             </div>
 
             <div class="status-container">
                 <div class="status-dot"></div>
-                <p class="status-text">Status: Open
+                <p class="status-text">Status: Open for orders</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyDiscordTag() {
+            const tagText = document.getElementById("discordTag").innerText;
+            const feedback = document.getElementById("copyFeedback");
+            
+            navigator.clipboard.writeText(tagText).then(() => {
+                feedback.innerText = "✓ Copied to clipboard!";
+                feedback.style.color = "#ff0055";
+                
+                setTimeout(() => {
+                    feedback.innerText = "[Click box to copy handle]";
+                    feedback.style.color = "var(--accent-cyan)";
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
