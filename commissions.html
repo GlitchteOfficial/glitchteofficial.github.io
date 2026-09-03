@@ -162,38 +162,34 @@
             font-weight: 500;
         }
 
-        /* Rate Row Styling */
-        .rate-row {
+        /* Rate Section Styling */
+        .rate-section {
             background: rgba(17, 7, 34, 0.75);
             border: 1px solid rgba(192, 96, 255, 0.4);
-            padding: 22px 25px;
-            margin-bottom: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
             border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             transition: var(--transition-smooth);
         }
 
-        .rate-row:hover {
+        .rate-section:hover {
             border-color: var(--accent-cyan);
             background: rgba(0, 255, 255, 0.04);
             box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
-            transform: translateY(-2px);
         }
 
-        .rate-row div h3 {
-            margin: 0 0 5px 0;
+        .rate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .rate-header h3 {
+            margin: 0;
             color: var(--accent-cyan);
             font-size: 1.1rem;
             letter-spacing: 1px;
-        }
-
-        .rate-row div p {
-            margin: 0;
-            color: var(--text-body);
-            font-size: 0.88rem;
-            opacity: 0.85;
         }
 
         .price {
@@ -203,6 +199,78 @@
             margin: 0;
             letter-spacing: 1px;
             text-shadow: 0 0 8px rgba(255, 0, 85, 0.3);
+        }
+
+        .rate-desc {
+            margin: 0 0 15px 0;
+            color: var(--text-body);
+            font-size: 0.88rem;
+            opacity: 0.85;
+        }
+
+        /* Sub-guidelines inside sections */
+        .rate-guidelines {
+            list-style: none;
+            border-top: 1px dashed rgba(192, 96, 255, 0.25);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+
+        .rate-guidelines li {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-body);
+            opacity: 0.9;
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .rate-guidelines li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
+            font-weight: bold;
+        }
+
+        /* General Requirements Box */
+        .general-reqs {
+            background: rgba(10, 4, 18, 0.9);
+            border: 1px dashed var(--accent-purple);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 30px;
+        }
+
+        .general-reqs h4 {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .general-reqs ul {
+            list-style: none;
+        }
+
+        .general-reqs li {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-body);
+            opacity: 0.85;
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .general-reqs li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
         }
 
         /* Footer */
@@ -229,10 +297,10 @@
             .commissions-card {
                 padding: 30px 20px;
             }
-            .rate-row {
+            .rate-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 12px;
+                gap: 8px;
             }
             .price {
                 align-self: flex-end;
@@ -252,53 +320,33 @@
 
     <div class="container">
         <div class="commissions-card">
-            <h2>Commission Pricing</h2>
+            <h2>Commission Pricing & Guidelines</h2>
             
-            <div class="rate-row">
-                <div>
+            <div class="rate-section">
+                <div class="rate-header">
                     <h3>Main Logo (Square)</h3>
-                    <p>High impact, custom squared asset tailored for channel and profile branding.</p>
+                    <p class="price">$XX</p>
                 </div>
-                <p class="price">$XX</p>
+                <p class="rate-desc">High impact, custom squared asset tailored for channel and profile branding.</p>
+                <ul class="rate-guidelines">
+                    <li>Customization options: Full Logo (Shading + Text), No Shading, or No Text.</li>
+                    <li>Comes with a removable background.</li>
+                    <li>Additional complexity or extra elements will incur a small added fee.</li>
+                </ul>
             </div>
 
-            <div class="rate-row">
-                <div>
+            <div class="rate-section">
+                <div class="rate-header">
                     <h3>Horizontal Logo</h3>
-                    <p>Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
+                    <p class="price">$XX</p>
                 </div>
-                <p class="price">$XX</p>
+                <p class="rate-desc">Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
+                <ul class="rate-guidelines">
+                    <li>Includes options for standard text layout, with or without mirror effects/shading.</li>
+                    <li>Extra text modifications or alternative layouts add a small fee.</li>
+                </ul>
             </div>
 
-            <div class="rate-row">
-                <div>
+            <div class="rate-section">
+                <div class="rate-header">
                     <h3>Hand-Drawn Art / PFPs</h3>
-                    <p>100% custom illustration assets and stylized profile pictures with a unique edge.</p>
-                </div>
-                <p class="price">$XX</p>
-            </div>
-
-            <div class="rate-row">
-                <div>
-                    <h3>Thumbnails</h3>
-                    <p>Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
-                </div>
-                <p class="price">$XX</p>
-            </div>
-
-            <div class="rate-row">
-                <div>
-                    <h3>3D Renders</h3>
-                    <p>High-quality custom scenes, lighting, and specialized character/item render configurations.</p>
-                </div>
-                <p class="price">$XX</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
-    </footer>
-
-</body>
-</html>
