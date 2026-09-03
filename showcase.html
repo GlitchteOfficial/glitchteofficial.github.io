@@ -160,13 +160,16 @@
         }
 
         .card {
-            background-color: rgba(17, 7, 34, 0.8);
+            background-color: rgba(13, 4, 26, 0.95);
             backdrop-filter: blur(8px);
             border: 2px solid var(--accent-purple);
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 4px 4px 0px rgba(157, 0, 255, 0.3);
             transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card:hover {
@@ -178,8 +181,9 @@
         .card img {
             width: 100%;
             height: 220px;
-            object-fit: cover;
+            object-fit: contain; /* Prevents cutting off/clipping the images */
             display: block;
+            padding: 8px;
         }
 
         /* Footer */
