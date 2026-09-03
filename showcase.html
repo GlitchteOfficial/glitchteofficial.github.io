@@ -7,8 +7,8 @@
     <style>
         :root {
             --bg-base: #0a0512;
-            --text-primary: #ffffff;        /* Pure white for headings and main elements */
-            --text-body: #f4f0ff;           /* Bright, highly legible off-white for body text */
+            --text-primary: #ffffff;        
+            --text-body: #f4f0ff;           
             --accent-cyan: #00ffff;
             --accent-pink: #ff0055;
             --accent-purple: #c060ff;       
@@ -43,7 +43,6 @@
             width: 100vw;
             height: 100vh;
             
-            /* Darkened overlay for max text readability */
             background-image: 
                 linear-gradient(rgba(5, 2, 10, 0.8), rgba(10, 4, 18, 0.85)),
                 url('background.gif');
@@ -72,11 +71,6 @@
         }
 
         /* Animations */
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -220,43 +214,85 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <div class="container">
-        <div class="showcase-section">
+    <main class="container">
+        <!-- Thumbnails (3 Items) -->
+        <section class="showcase-section">
             <h2>Thumbnails</h2>
             <div class="gallery">
-                <div class="card">
-                    <img src="thumbnail1.png" alt="Thumbnail 1">
-                </div>
-                </div>
-        </div>
+                <div class="card"><img src="Thumbnail (1).png" alt="Thumbnail 1"></div>
+                <div class="card"><img src="Thumbnail (2).png" alt="Thumbnail 2"></div>
+                <div class="card"><img src="Thumbnail (3).png" alt="Thumbnail 3"></div>
+            </div>
+        </section>
 
-        <div class="showcase-section">
+        <!-- PFPs (4 Items) -->
+        <section class="showcase-section">
             <h2>PFPs</h2>
             <div class="gallery">
-                <div class="card">
-                    <img src="pfp1.png" alt="Profile Picture 1">
-                </div>
-                </div>
-        </div>
+                <div class="card"><img src="PFP (1).png" alt="PFP 1"></div>
+                <div class="card"><img src="PFP (2).png" alt="PFP 2"></div>
+                <div class="card"><img src="PFP (3).png" alt="PFP 3"></div>
+                <div class="card"><img src="PFP (4).png" alt="PFP 4"></div>
+            </div>
+        </section>
 
-        <div class="showcase-section">
+        <!-- Drawn Art / Logos (28 Items) -->
+        <section class="showcase-section">
             <h2>Drawn Logos</h2>
             <div class="gallery">
-                <div class="card">
-                    <img src="logo1.png" alt="Drawn Logo 1">
-                </div>
-                </div>
-        </div>
+                <div class="card"><img src="DrawnArt (1).png" alt="DrawnArt 1"></div>
+                <div class="card"><img src="DrawnArt (2).png" alt="DrawnArt 2"></div>
+                <div class="card"><img src="DrawnArt (3).png" alt="DrawnArt 3"></div>
+                <div class="card"><img src="DrawnArt (4).png" alt="DrawnArt 4"></div>
+                <div class="card"><img src="DrawnArt (5).png" alt="DrawnArt 5"></div>
+                <div class="card"><img src="DrawnArt (6).png" alt="DrawnArt 6"></div>
+                <div class="card"><img src="DrawnArt (7).png" alt="DrawnArt 7"></div>
+                <div class="card"><img src="DrawnArt (8).png" alt="DrawnArt 8"></div>
+                <div class="card"><img src="DrawnArt (9).png" alt="DrawnArt 9"></div>
+                <div class="card"><img src="DrawnArt (10).png" alt="DrawnArt 10"></div>
+                <div class="card"><img src="DrawnArt (11).png" alt="DrawnArt 11"></div>
+                <div class="card"><img src="DrawnArt (12).png" alt="DrawnArt 12"></div>
+                <div class="card"><img src="DrawnArt (13).png" alt="DrawnArt 13"></div>
+                <div class="card"><img src="DrawnArt (14).png" alt="DrawnArt 14"></div>
+                <div class="card"><img src="DrawnArt (15).png" alt="DrawnArt 15"></div>
+                <div class="card"><img src="DrawnArt (16).png" alt="DrawnArt 16"></div>
+                <div class="card"><img src="DrawnArt (17).png" alt="DrawnArt 17"></div>
+                <div class="card"><img src="DrawnArt (18).png" alt="DrawnArt 18"></div>
+                <div class="card"><img src="DrawnArt (19).png" alt="DrawnArt 19"></div>
+                <div class="card"><img src="DrawnArt (20).png" alt="DrawnArt 20"></div>
+                <div class="card"><img src="DrawnArt (21).png" alt="DrawnArt 21"></div>
+                <div class="card"><img src="DrawnArt (22).png" alt="DrawnArt 22"></div>
+                <div class="card"><img src="DrawnArt (23).png" alt="DrawnArt 23"></div>
+                <div class="card"><img src="DrawnArt (24).png" alt="DrawnArt 24"></div>
+                <div class="card"><img src="DrawnArt (25).png" alt="DrawnArt 25"></div>
+                <div class="card"><img src="DrawnArt (26).png" alt="DrawnArt 26"></div>
+                <div class="card"><img src="DrawnArt (27).png" alt="DrawnArt 27"></div>
+                <div class="card"><img src="DrawnArt (28).png" alt="DrawnArt 28"></div>
+            </div>
+        </section>
 
-        <div class="showcase-section">
+        <!-- Renders (15 Items) -->
+        <section class="showcase-section">
             <h2>Renders</h2>
             <div class="gallery">
-                <div class="card">
-                    <img src="render1.png" alt="3D Render 1">
-                </div>
-                </div>
-        </div>
-    </div>
+                <div class="card"><img src="Render (1).png" alt="Render 1"></div>
+                <div class="card"><img src="Render (2).png" alt="Render 2"></div>
+                <div class="card"><img src="Render (3).png" alt="Render 3"></div>
+                <div class="card"><img src="Render (4).png" alt="Render 4"></div>
+                <div class="card"><img src="Render (5).png" alt="Render 5"></div>
+                <div class="card"><img src="Render (6).png" alt="Render 6"></div>
+                <div class="card"><img src="Render (7).png" alt="Render 7"></div>
+                <div class="card"><img src="Render (8).png" alt="Render 8"></div>
+                <div class="card"><img src="Render (9).png" alt="Render 9"></div>
+                <div class="card"><img src="Render (10).png" alt="Render 10"></div>
+                <div class="card"><img src="Render (11).png" alt="Render 11"></div>
+                <div class="card"><img src="Render (12).png" alt="Render 12"></div>
+                <div class="card"><img src="Render (13).png" alt="Render 13"></div>
+                <div class="card"><img src="Render (14).png" alt="Render 14"></div>
+                <div class="card"><img src="Render (15).png" alt="Render 15"></div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
