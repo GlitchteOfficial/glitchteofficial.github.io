@@ -30,19 +30,43 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             background-color: var(--bg-base);
-            background-image: 
-                linear-gradient(rgba(5, 2, 10, 0.85), rgba(10, 4, 18, 0.9)),
-                url('background.gif');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+        /* --- BACKGROUND OPENING ANIMATION LAYER --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            
+            background-image: 
+                linear-gradient(rgba(5, 2, 10, 0.85), rgba(10, 4, 18, 0.9)),
+                url('background.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            z-index: -1;
+            animation: bgOpenAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes bgOpenAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(1.08);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Typography */
@@ -136,6 +160,7 @@
             transition: var(--transition-smooth);
         }
 
+        /* Prevent weird layout shifting/glitching on hover */
         .contact-card:hover {
             border-color: rgba(0, 255, 255, 0.4);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 255, 255, 0.15);
@@ -165,8 +190,8 @@
             border-radius: 6px;
             margin: 25px 0 15px 0;
             cursor: pointer;
-            position: relative;
             transition: var(--transition-smooth);
+            user-select: none;
         }
 
         .discord-handle-box:hover {
@@ -194,9 +219,9 @@
             text-transform: uppercase;
         }
 
-        /* Status Section */
+        /* Status Section - Fixed flex structure to remove floating dot */
         .status-container {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
@@ -258,7 +283,7 @@
 
     <div class="container">
         <div class="contact-card">
-            <h2>COMMENCE COMMISSION PROTOCOL</h2>
+            <h2>CONTACT ME ON DISCORD TO GET A COMMISION!</h2>
             <p>Send a direct message request on Discord to begin your project layout and consultation.</p>
             <p style="font-size: 0.85rem; opacity: 0.7;">Please use the "Add A Message" feature when sending a Friend Request!</p>
             
@@ -267,9 +292,11 @@
                 <div class="copy-feedback" id="copyFeedback">[Click box to copy handle]</div>
             </div>
 
-            <div class="status-container">
-                <div class="status-dot"></div>
-                <p class="status-text">Status: Open for orders</p>
+            <div>
+                <div class="status-container">
+                    <div class="status-dot"></div>
+                    <p class="status-text">Status: Open</p>
+                </div>
             </div>
         </div>
     </div>
@@ -283,17 +310,47 @@
             const tagText = document.getElementById("discordTag").innerText;
             const feedback = document.getElementById("copyFeedback");
             
-            navigator.clipboard.writeText(tagText).then(() => {
-                feedback.innerText = "✓ Copied to clipboard!";
-                feedback.style.color = "#ff0055";
-                
-                setTimeout(() => {
-                    feedback.innerText = "[Click box to copy handle]";
-                    feedback.style.color = "var(--accent-cyan)";
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(tagText).then(() => {
+                    showSuccess(feedback);
+                }).catch(() => {
+                    fallbackCopy(tagText, feedback);
+                });
+            } else {
+                fallbackCopy(tagText, feedback);
+            }
+        }
+
+        function fallbackCopy(text, feedbackElement) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";  
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showSuccess(feedbackElement);
+                } else {
+                    feedbackElement.innerText = "Failed to copy";
+                }
+            } catch (err) {
+                console.error('Fallback copy error', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showSuccess(feedbackElement) {
+            feedbackElement.innerText = "✓ Copied to clipboard!";
+            feedbackElement.style.color = "#ff0055";
+            
+            setTimeout(() => {
+                feedbackElement.innerText = "[Click box to copy handle]";
+                feedbackElement.style.color = "var(--accent-cyan)";
+            }, 2000);
         }
     </script>
 
