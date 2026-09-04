@@ -281,7 +281,7 @@
             font-weight: bold;
         }
 
-        /* General Requirements Box */
+        /* General Requirements & Add-ons Box */
         .general-reqs {
             background: rgba(10, 4, 18, 0.9);
             border: 1px dashed var(--accent-purple);
@@ -301,7 +301,7 @@
 
         .general-reqs ul {
             list-style: none;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .general-reqs li {
@@ -319,6 +319,50 @@
             position: absolute;
             left: 0;
             color: var(--accent-pink);
+        }
+
+        /* Character & Revision Add-ons Box */
+        .addons-box {
+            background: rgba(17, 7, 34, 0.85);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .addon-column h5 {
+            font-family: var(--font-mono);
+            color: var(--accent-pink);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .addon-column ul {
+            list-style: none;
+        }
+
+        .addon-column li {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-body);
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 10px;
+        }
+
+        .addon-column li span.fee {
+            color: var(--accent-cyan);
+            font-weight: bold;
         }
 
         /* TOS Button Styling */
@@ -393,6 +437,9 @@
             .showcase-img {
                 max-height: 140px;
             }
+            .addons-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -413,7 +460,7 @@
             <div class="rate-section">
                 <div class="rate-header">
                     <h3>Main Logo (Square)</h3>
-                    <p class="price">$XX</p>
+                    <p class="price">$10</p>
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
@@ -433,7 +480,7 @@
             <div class="rate-section">
                 <div class="rate-header">
                     <h3>Horizontal Logo</h3>
-                    <p class="price">$XX</p>
+                    <p class="price">$12</p>
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
@@ -452,7 +499,7 @@
             <div class="rate-section">
                 <div class="rate-header">
                     <h3>Hand-Drawn Art / PFPs</h3>
-                    <p class="price">$XX</p>
+                    <p class="price">$15</p>
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
@@ -472,7 +519,7 @@
             <div class="rate-section">
                 <div class="rate-header">
                     <h3>Thumbnails</h3>
-                    <p class="price">$XX</p>
+                    <p class="price">$8</p>
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
@@ -493,7 +540,7 @@
             <div class="rate-section">
                 <div class="rate-header">
                     <h3>Minecraft 3D Renders</h3>
-                    <p class="price">$XX</p>
+                    <p class="price">$5</p>
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
@@ -506,6 +553,32 @@
                     </div>
                     <div class="showcase-container">
                         <img src="images/Render (1).png" alt="Minecraft 3D Render Example" class="showcase-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="addons-box">
+                <div class="general-reqs" style="margin-top: 0; background: transparent; border: none; padding: 0;">
+                    <h4>CHARACTER & REVISION FEES</h4>
+                </div>
+                <div class="addons-grid">
+                    <div class="addon-column">
+                        <h5>Character Scaling</h5>
+                        <ul>
+                            <li>1 Character: <span class="fee">Included</span></li>
+                            <li>2 Characters: <span class="fee">+$3</span></li>
+                            <li>3 Characters: <span class="fee">+$5</span></li>
+                            <li>4+ Characters: <span class="fee">+$8</span></li>
+                        </ul>
+                    </div>
+                    <div class="addon-column">
+                        <h5>Revisions & Add-Ons</h5>
+                        <ul>
+                            <li>Minor Revisions (1-2): <span class="fee">Free</span></li>
+                            <li>Major Revision: <span class="fee">+$3</span></li>
+                            <li>Custom 3D Models: <span class="fee">+$3</span></li>
+                            <li>Complex Graphics / Props: <span class="fee">+$2</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
