@@ -38,7 +38,7 @@
             justify-content: space-between;
         }
 
-/* Background Layer matching Showcase page opacity */
+ /* --- BACKGROUND OPENING ANIMATION LAYER --- */
         body::before {
             content: '';
             position: fixed;
@@ -46,15 +46,18 @@
             left: 0;
             width: 100vw;
             height: 100vh;
+            
             background-image: 
-                linear-gradient(rgba(10, 5, 18, 0.5), rgba(10, 5, 18, 0.6)),
-                url('images/background.gif');
+                linear-gradient(rgba(5, 2, 10, 0.8), rgba(10, 4, 18, 0.85)),
+                url('background.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            
             z-index: -1;
             animation: bgOpenAnimation 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+
 
         @keyframes bgOpenAnimation {
             0% { opacity: 0; transform: scale(1.08); }
