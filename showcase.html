@@ -202,8 +202,43 @@
 
         /* Responsive Design */
         @media (max-width: 850px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 0.8rem 1.2rem;
+                padding: 0.8rem 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
             .container {
                 margin: 2rem auto;
+                padding: 0 1.2rem;
+            }
+
+            .showcase-section {
+                margin-bottom: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 12px;
+            }
+
+            .card img {
+                height: 140px;
+                padding: 4px;
+            }
+
+            footer {
+                margin-top: 3rem;
             }
         }
     </style>
@@ -219,7 +254,6 @@
     </nav>
 
     <main class="container">
-        <!-- Thumbnails (3 Items) -->
         <section class="showcase-section">
             <h2>Thumbnails</h2>
             <div class="gallery">
@@ -229,7 +263,6 @@
             </div>
         </section>
 
-        <!-- PFPs (4 Items) -->
         <section class="showcase-section">
             <h2>PFPs</h2>
             <div class="gallery">
@@ -240,7 +273,6 @@
             </div>
         </section>
 
-        <!-- Drawn Art / Logos (28 Items) -->
         <section class="showcase-section">
             <h2>Drawn Logos</h2>
             <div class="gallery">
@@ -275,7 +307,6 @@
             </div>
         </section>
 
-        <!-- Renders (15 Items) -->
         <section class="showcase-section">
             <h2>Renders</h2>
             <div class="gallery">
