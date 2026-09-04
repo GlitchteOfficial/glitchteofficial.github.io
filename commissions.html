@@ -62,7 +62,7 @@
         }
 
         /* Typography */
-        h1, h2, h3, nav a, .btn-main, .mono-text, .price {
+        h1, h2, h3, nav a, .btn-main, .mono-text, .price, .tos-btn {
             font-family: var(--font-mono);
         }
 
@@ -214,15 +214,18 @@
 
         .showcase-container {
             flex-shrink: 0;
-            width: 140px;
+            width: 160px;
             display: flex;
             gap: 8px;
+            justify-content: flex-end;
+            align-items: center;
         }
 
         .showcase-img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
+            max-width: 100%;
+            height: auto;
+            max-height: 110px;
+            object-fit: contain;
             border-radius: 4px;
             border: 1px solid rgba(0, 255, 255, 0.3);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -241,7 +244,8 @@
         }
 
         .showcase-container.dual .showcase-img {
-            width: 50%;
+            max-width: 48%;
+            max-height: 100px;
         }
 
         .rate-desc {
@@ -297,6 +301,7 @@
 
         .general-reqs ul {
             list-style: none;
+            margin-bottom: 20px;
         }
 
         .general-reqs li {
@@ -314,6 +319,36 @@
             position: absolute;
             left: 0;
             color: var(--accent-pink);
+        }
+
+        /* TOS Button Styling */
+        .tos-btn-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 15px;
+        }
+
+        .tos-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--bg-base);
+            background-color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 4px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        }
+
+        .tos-btn:hover {
+            background-color: transparent;
+            color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -356,7 +391,7 @@
                 justify-content: center;
             }
             .showcase-img {
-                height: 140px;
+                max-height: 140px;
             }
         }
     </style>
@@ -382,11 +417,11 @@
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
-                        <p class="rate-desc">High impact, custom squared asset tailored for channel and profile branding.</p>
+                        <p class="rate-desc">High-impact, custom square assets designed for channel profile branding, avatars, and icons.</p>
                         <ul class="rate-guidelines">
-                            <li>Customization options: Full Logo (Shading + Text), No Shading, or No Text.</li>
-                            <li>Comes with a removable background.</li>
-                            <li>Additional complexity or extra elements will incur a small added fee.</li>
+                            <li>Includes options for Full Shading + Text, Flat Color, or Text-Only variants.</li>
+                            <li>Delivered with a transparent background for versatile branding usage.</li>
+                            <li>Complex elements or extra graphic assets incur a small additional fee.</li>
                         </ul>
                     </div>
                     <div class="showcase-container">
@@ -402,10 +437,10 @@
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
-                        <p class="rate-desc">Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
+                        <p class="rate-desc">Wide-format banner and header branding optimized for social media, stream overlays, and website headers.</p>
                         <ul class="rate-guidelines">
-                            <li>Includes options for standard text layout, with or without mirror effects/shading.</li>
-                            <li>Extra text modifications or alternative layouts add a small fee.</li>
+                            <li>Includes standard typographic layout with optional lighting, drop shadows, or mirror effects.</li>
+                            <li>Custom font modifications or complex layout alterations incur a small fee.</li>
                         </ul>
                     </div>
                     <div class="showcase-container">
@@ -421,10 +456,10 @@
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
-                        <p class="rate-desc">100% custom illustration assets and stylized profile pictures with a unique edge.</p>
+                        <p class="rate-desc">Fully custom digital illustrations and stylized profile pictures crafted to showcase your personal brand.</p>
                         <ul class="rate-guidelines">
-                            <li>Prices scale up based on character count and detail complexity.</li>
-                            <li>Clear visual references are required upfront.</li>
+                            <li>Rates scale according to the number of characters and visual complexity.</li>
+                            <li>Clear visual reference material and character sheets are required prior to starting.</li>
                         </ul>
                     </div>
                     <div class="showcase-container dual">
@@ -441,12 +476,12 @@
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
-                        <p class="rate-desc">Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
+                        <p class="rate-desc">Professional, high-conversion video thumbnails optimized for viewer engagement and click-through performance.</p>
                         <ul class="rate-guidelines">
-                            <li>Pricing scales per character and overall scene complexity.</li>
-                            <li>Building a custom set/environment incurs an extra charge.</li>
-                            <li>Providing custom models incurs a small additional fee.</li>
-                            <li>Clients must provide the specific world file or skin assets if applicable.</li>
+                            <li>Pricing scales based on character count, custom posing, and scene complexity.</li>
+                            <li>Building custom set environments or scenes incurs an additional charge.</li>
+                            <li>Providing custom 3D models incurs a small additional fee.</li>
+                            <li>Clients must supply relevant world files or character skin files where applicable.</li>
                         </ul>
                     </div>
                     <div class="showcase-container">
@@ -462,11 +497,11 @@
                 </div>
                 <div class="rate-body">
                     <div class="rate-content">
-                        <p class="rate-desc">High-quality, dynamic Minecraft character renders featuring custom posing, lighting, and scene setups.</p>
+                        <p class="rate-desc">High-quality, dynamically lit Minecraft character renders featuring custom posing, prop integration, and atmospheric lighting.</p>
                         <ul class="rate-guidelines">
-                            <li>Additional characters, props, or complex scene elements will increase the base price.</li>
-                            <li>Including custom models incurs a small additional fee.</li>
-                            <li>Detailed character skin files or references are required before rendering.</li>
+                            <li>Additional characters, custom props, or intricate scene environments will increase the base rate.</li>
+                            <li>Including custom 3D models incurs a small additional fee.</li>
+                            <li>High-resolution character skin files or visual reference sheets are required before rendering.</li>
                         </ul>
                     </div>
                     <div class="showcase-container">
@@ -476,13 +511,16 @@
             </div>
 
             <div class="general-reqs">
-                <h4>[// ORDER_REQUIREMENTS & FEES]</h4>
+                <h4>ORDER REQUIREMENTS & FEES</h4>
                 <ul>
-                    <li>References are strictly required for all orders to ensure accuracy.</li>
-                    <li>Excessive revision requests past standard allowances will incur a proportional extra fee.</li>
-                    <li>Full redesigns requested late in the process may be turned down or heavily billed.</li>
-                    <li>No requests involving overly complex items like intricate mechs or detailed armor.</li>
+                    <li>Clear visual references are strictly required for all commissions to guarantee accuracy.</li>
+                    <li>Revision requests exceeding standard project milestones will incur a proportional surcharge.</li>
+                    <li>Major design changes requested late in the production workflow may be declined or re-quoted.</li>
+                    <li>Complex elements such as intricate mechanical gear or detailed armor sets are subject to review.</li>
                 </ul>
+                <div class="tos-btn-wrapper">
+                    <a href="tos.html" class="tos-btn">View Full Terms of Service</a>
+                </div>
             </div>
 
         </div>
