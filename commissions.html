@@ -170,9 +170,6 @@
             margin-bottom: 25px;
             border-radius: 6px;
             transition: var(--transition-smooth);
-            display: flex;
-            gap: 20px;
-            align-items: center;
         }
 
         .rate-section:hover {
@@ -181,25 +178,11 @@
             box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
         }
 
-        .rate-img {
-            width: 110px;
-            height: 90px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            flex-shrink: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .rate-content {
-            flex-grow: 1;
-        }
-
         .rate-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .rate-header h3 {
@@ -219,7 +202,7 @@
         }
 
         .rate-desc {
-            margin: 0 0 12px 0;
+            margin: 0 0 15px 0;
             color: var(--text-body);
             font-size: 0.88rem;
             opacity: 0.85;
@@ -229,8 +212,8 @@
         .rate-guidelines {
             list-style: none;
             border-top: 1px dashed rgba(192, 96, 255, 0.25);
-            padding-top: 10px;
-            margin-top: 10px;
+            padding-top: 12px;
+            margin-top: 12px;
         }
 
         .rate-guidelines li {
@@ -238,7 +221,7 @@
             font-size: 0.8rem;
             color: var(--text-body);
             opacity: 0.9;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             position: relative;
             padding-left: 18px;
         }
@@ -314,18 +297,10 @@
             .commissions-card {
                 padding: 30px 20px;
             }
-            .rate-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .rate-img {
-                width: 100%;
-                height: 140px;
-            }
             .rate-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 6px;
+                gap: 8px;
             }
             .price {
                 align-self: flex-end;
@@ -347,91 +322,70 @@
         <div class="commissions-card">
             <h2>Commission Pricing & Guidelines</h2>
             
-            <!-- Square Logos -->
             <div class="rate-section">
-                <img src="square_logo_sample.png" alt="Square Logo Sample" class="rate-img">
-                <div class="rate-content">
-                    <div class="rate-header">
-                        <h3>Main Logo (Square)</h3>
-                        <p class="price">$XX</p>
-                    </div>
-                    <p class="rate-desc">High impact, custom squared asset tailored for channel and profile branding.</p>
-                    <ul class="rate-guidelines">
-                        <li>Customization options: Full Logo (Shading + Text), No Shading, or No Text.</li>
-                        <li>Comes with a removable background.</li>
-                        <li>Additional complexity or extra elements will incur a small added fee.</li>
-                    </ul>
+                <div class="rate-header">
+                    <h3>Main Logo (Square)</h3>
+                    <p class="price">$XX</p>
                 </div>
+                <p class="rate-desc">High impact, custom squared asset tailored for channel and profile branding.</p>
+                <ul class="rate-guidelines">
+                    <li>Customization options: Full Logo (Shading + Text), No Shading, or No Text.</li>
+                    <li>Comes with a removable background.</li>
+                    <li>Additional complexity or extra elements will incur a small added fee.</li>
+                </ul>
             </div>
 
-            <!-- Horizontal Logos -->
             <div class="rate-section">
-                <img src="horizontal_logo_sample.png" alt="Horizontal Logo Sample" class="rate-img">
-                <div class="rate-content">
-                    <div class="rate-header">
-                        <h3>Horizontal Logo</h3>
-                        <p class="price">$XX</p>
-                    </div>
-                    <p class="rate-desc">Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
-                    <ul class="rate-guidelines">
-                        <li>Includes options for standard text layout, with or without mirror effects/shading.</li>
-                        <li>Extra text modifications or alternative layouts add a small fee.</li>
-                    </ul>
+                <div class="rate-header">
+                    <h3>Horizontal Logo</h3>
+                    <p class="price">$XX</p>
                 </div>
+                <p class="rate-desc">Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
+                <ul class="rate-guidelines">
+                    <li>Includes options for standard text layout, with or without mirror effects/shading.</li>
+                    <li>Extra text modifications or alternative layouts add a small fee.</li>
+                </ul>
             </div>
 
-            <!-- Hand-Drawn Art / PFPs -->
             <div class="rate-section">
-                <img src="pfp_sample.png" alt="Hand-Drawn Art Sample" class="rate-img">
-                <div class="rate-content">
-                    <div class="rate-header">
-                        <h3>Hand-Drawn Art / PFPs</h3>
-                        <p class="price">$XX</p>
-                    </div>
-                    <p class="rate-desc">100% custom illustration assets and stylized profile pictures with a unique edge.</p>
-                    <ul class="rate-guidelines">
-                        <li>Prices scale up based on character count and detail complexity.</li>
-                        <li>Clear visual references are required upfront.</li>
-                    </ul>
+                <div class="rate-header">
+                    <h3>Hand-Drawn Art / PFPs</h3>
+                    <p class="price">$XX</p>
                 </div>
+                <p class="rate-desc">100% custom illustration assets and stylized profile pictures with a unique edge.</p>
+                <ul class="rate-guidelines">
+                    <li>Prices scale up based on character count and detail complexity.</li>
+                    <li>Clear visual references are required upfront.</li>
+                </ul>
             </div>
 
-            <!-- Thumbnails -->
             <div class="rate-section">
-                <img src="thumbnail_sample.png" alt="Thumbnail Sample" class="rate-img">
-                <div class="rate-content">
-                    <div class="rate-header">
-                        <h3>Thumbnails</h3>
-                        <p class="price">$XX</p>
-                    </div>
-                    <p class="rate-desc">Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
-                    <ul class="rate-guidelines">
-                        <li>Pricing scales per character and overall scene complexity.</li>
-                        <li>Building a custom set/environment incurs an extra charge.</li>
-                        <li>Clients must provide the specific world file or skin assets if applicable.</li>
-                    </ul>
+                <div class="rate-header">
+                    <h3>Thumbnails</h3>
+                    <p class="price">$XX</p>
                 </div>
+                <p class="rate-desc">Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
+                <ul class="rate-guidelines">
+                    <li>Pricing scales per character and overall scene complexity.</li>
+                    <li>Building a custom set/environment incurs an extra charge.</li>
+                    <li>Clients must provide the specific world file or skin assets if applicable.</li>
+                </ul>
             </div>
 
-            <!-- Minecraft Renders -->
             <div class="rate-section">
-                <img src="render (1).png" alt="Minecraft Render Sample" class="rate-img">
-                <div class="rate-content">
-                    <div class="rate-header">
-                        <h3>Minecraft Renders</h3>
-                        <p class="price">$XX</p>
-                    </div>
-                    <p class="rate-desc">High-quality custom Minecraft scenes, custom lighting, and specialized character/item poses.</p>
-                    <ul class="rate-guidelines">
-                        <li>Additional characters, props, or complex scene blocks will increase the base price.</li>
-                        <li>Skin files and detailed pose references are required before rendering commences.</li>
-                    </ul>
+                <div class="rate-header">
+                    <h3>3D Renders</h3>
+                    <p class="price">$XX</p>
                 </div>
+                <p class="rate-desc">High-quality custom scenes, lighting, and specialized character/item render configurations.</p>
+                <ul class="rate-guidelines">
+                    <li>Additional characters, props, or complex scene elements will increase the base price.</li>
+                    <li>Detailed references are required before rendering commences.</li>
+                </ul>
             </div>
 
-            <!-- General Requirements & Add-ons -->
             <div class="general-reqs">
-                <h4>ORDER REQUIREMENTS & FEES</h4>
+                <h4>[// ORDER_REQUIREMENTS & FEES]</h4>
                 <ul>
                     <li>References are strictly required for all orders to ensure accuracy.</li>
                     <li>Excessive revision requests past standard allowances will incur a proportional extra fee.</li>
