@@ -508,42 +508,56 @@
         <p>© 2026 Glitchte. All rights reserved.</p>
     </footer>
 
-   <script>
-    async function updateGlobalViews() {
+<script>
+    // Global View Tracker using CounterAPI
+    const NAMESPACE = 'glitchte_portfolio'; // Replace with your CounterAPI workspace/namespace
+    const KEY = 'site_views';
+
+    async function trackGlobalViews() {
         try {
-            // Increments the count on the server and returns the total
-            const res = await fetch('https://counterapi.dev/api/v1/glitchte_portfolio/index_views/up');
-            const data = await res.json();
+            // Send request to increment global count by 1
+            const response = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`);
+            const data = await response.json();
             
             const totalViews = data.count;
+            console.log(`Global Site Views: ${totalViews}`);
 
-            // Trigger the 100th visitor modal if total views hits exactly 100
+            // Trigger 100th visitor modal if global count reaches 100 and user hasn't claimed it yet
             if (totalViews === 100 && !localStorage.getItem('claimed_100')) {
                 document.getElementById('winnerModal').style.display = 'flex';
             }
-        } catch (err) {
-            console.error('Error updating view count:', err);
+        } catch (error) {
+            console.error('Failed to update global view count:', error);
         }
     }
 
-    // Call function on page load
-    updateGlobalViews();
-</script>
-        }
+    // Run view counter on page load
+    trackGlobalViews();
 
-        // Rotating Reviews Script
-        const reviews = [
-            { stars: "★★★★★", msg: "Super fast delivery and the lighting on the 3D render was top notch!", author: "- @AlexRenders" },
-            { stars: "★★★★★", msg: "Best quality logo I've bought for under $15. Will order again!", author: "- @ShadowV" },
-            { stars: "★★★★☆", msg: "Great communication throughout the design process.", author: "- @CraftyGirl" }
-        ];
-        let revIdx = 0;
-        setInterval(() => {
-            revIdx = (revIdx + 1) % reviews.length;
-            document.getElementById('revStars').textContent = reviews[revIdx].stars;
-            document.getElementById('revMsg').textContent = `"${reviews[revIdx].msg}"`;
-            document.getElementById('revAuthor').textContent = reviews[revIdx].author;
-        }, 5000);
-    </script>
+    // 100th Visitor Form Submission
+    function submitWinner() {
+        const handle = document.getElementById('discordInput').value;
+        if (handle) {
+            localStorage.setItem('winner_100_handle', handle);
+            localStorage.setItem('claimed_100', 'true');
+            alert('Thank you! Your handle has been saved.');
+            document.getElementById('winnerModal').style.display = 'none';
+        }
+    }
+
+    // Rotating Reviews Script
+    const reviews = [
+        { stars: "★★★★★", msg: "Super fast delivery and the lighting on the 3D render was top notch!", author: "- @AlexRenders" },
+        { stars: "★★★★★", msg: "Best quality logo I've bought for under $15. Will order again!", author: "- @ShadowV" },
+        { stars: "★★★★☆", msg: "Great communication throughout the design process.", author: "- @CraftyGirl" }
+    ];
+    let revIdx = 0;
+    setInterval(() => {
+        revIdx = (revIdx + 1) % reviews.length;
+        document.getElementById('revStars').textContent = reviews[revIdx].stars;
+        document.getElementById('revMsg').textContent = `"${reviews[revIdx].msg}"`;
+        document.getElementById('revAuthor').textContent = reviews[revIdx].author;
+    }, 5000);
+</script>
 </body>
 </html>
