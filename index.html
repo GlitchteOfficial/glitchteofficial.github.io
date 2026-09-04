@@ -373,10 +373,78 @@
             font-family: var(--font-mono);
         }
 
+        /* UPDATED MOBILE RESPONSIVE STYLES */
         @media (max-width: 850px) {
-            .hero-split { flex-direction: column; text-align: center; gap: 2rem; }
+            nav {
+                flex-wrap: wrap;
+                gap: 0.8rem 1.2rem;
+                padding: 0.8rem 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+
+            header {
+                padding: 2rem 1rem 1rem;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+            }
+
+            header p {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+            }
+
+            .queue-tracker-box {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .hero-split { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 2rem; 
+                padding: 0 1.2rem;
+            }
+            
             .hero-text { text-align: center; }
-            .btn-group { justify-content: center; }
+            
+            .hero-text h2 {
+                font-size: 1.25rem;
+            }
+
+            .character-render {
+                max-height: 280px;
+            }
+
+            .btn-group { 
+                justify-content: center; 
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .btn-main {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section-container {
+                padding: 0 1.2rem;
+                margin-top: 2.5rem;
+            }
+
+            .mini-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+
+            footer {
+                margin-top: 3rem;
+            }
         }
     </style>
 </head>
@@ -492,7 +560,6 @@
     </footer>
 
     <script>
-
         const reviews = [
             { stars: "★★★★★", msg: "Glitchte has provided me with many good services over my time I’ve known him, and he’s been a good friend too.  One of the logos he made for me was the one for my Sonic animation series and I’m looking forward to the next time I need a logo done.", author: "- @jcf_va" },
             { stars: "★★★★★", msg: "Logos are well quality and done in a manageable time. Will hire again! Anyone would be missing out if they choose not to hire him.", author: "- @toningmonster" },
