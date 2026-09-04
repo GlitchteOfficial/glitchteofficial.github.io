@@ -508,23 +508,27 @@
         <p>© 2026 Glitchte. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Visitor Tracking Script
-        let views = parseInt(localStorage.getItem('site_views') || '0') + 1;
-        localStorage.setItem('site_views', views.toString());
+   <script>
+    async function updateGlobalViews() {
+        try {
+            // Increments the count on the server and returns the total
+            const res = await fetch('https://counterapi.dev/api/v1/glitchte_portfolio/index_views/up');
+            const data = await res.json();
+            
+            const totalViews = data.count;
 
-        if (views === 100 && !localStorage.getItem('claimed_100')) {
-            document.getElementById('winnerModal').style.display = 'flex';
-        }
-
-        function submitWinner() {
-            const handle = document.getElementById('discordInput').value;
-            if(handle) {
-                localStorage.setItem('winner_100_handle', handle);
-                localStorage.setItem('claimed_100', 'true');
-                alert('Thank you! Your handle has been saved.');
-                document.getElementById('winnerModal').style.display = 'none';
+            // Trigger the 100th visitor modal if total views hits exactly 100
+            if (totalViews === 100 && !localStorage.getItem('claimed_100')) {
+                document.getElementById('winnerModal').style.display = 'flex';
             }
+        } catch (err) {
+            console.error('Error updating view count:', err);
+        }
+    }
+
+    // Call function on page load
+    updateGlobalViews();
+</script>
         }
 
         // Rotating Reviews Script
