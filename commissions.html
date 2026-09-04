@@ -201,6 +201,49 @@
             text-shadow: 0 0 8px rgba(255, 0, 85, 0.3);
         }
 
+        /* Flex Layout for Showcase Images */
+        .rate-body {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .rate-content {
+            flex: 1;
+        }
+
+        .showcase-container {
+            flex-shrink: 0;
+            width: 140px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .showcase-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: var(--transition-smooth);
+        }
+
+        .showcase-img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+        }
+
+        /* Two-image showcase for Art/PFP section */
+        .showcase-container.dual {
+            width: 180px;
+        }
+
+        .showcase-container.dual .showcase-img {
+            width: 50%;
+        }
+
         .rate-desc {
             margin: 0 0 15px 0;
             color: var(--text-body);
@@ -305,6 +348,16 @@
             .price {
                 align-self: flex-end;
             }
+            .rate-body {
+                flex-direction: column-reverse;
+            }
+            .showcase-container, .showcase-container.dual {
+                width: 100%;
+                justify-content: center;
+            }
+            .showcase-img {
+                height: 140px;
+            }
         }
     </style>
 </head>
@@ -327,12 +380,19 @@
                     <h3>Main Logo (Square)</h3>
                     <p class="price">$XX</p>
                 </div>
-                <p class="rate-desc">High impact, custom squared asset tailored for channel and profile branding.</p>
-                <ul class="rate-guidelines">
-                    <li>Customization options: Full Logo (Shading + Text), No Shading, or No Text.</li>
-                    <li>Comes with a removable background.</li>
-                    <li>Additional complexity or extra elements will incur a small added fee.</li>
-                </ul>
+                <div class="rate-body">
+                    <div class="rate-content">
+                        <p class="rate-desc">High impact, custom squared asset tailored for channel and profile branding.</p>
+                        <ul class="rate-guidelines">
+                            <li>Customization options: Full Logo (Shading + Text), No Shading, or No Text.</li>
+                            <li>Comes with a removable background.</li>
+                            <li>Additional complexity or extra elements will incur a small added fee.</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-container">
+                        <img src="DrawnArt (8).png" alt="Square Logo Example" class="showcase-img">
+                    </div>
+                </div>
             </div>
 
             <div class="rate-section">
@@ -340,11 +400,18 @@
                     <h3>Horizontal Logo</h3>
                     <p class="price">$XX</p>
                 </div>
-                <p class="rate-desc">Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
-                <ul class="rate-guidelines">
-                    <li>Includes options for standard text layout, with or without mirror effects/shading.</li>
-                    <li>Extra text modifications or alternative layouts add a small fee.</li>
-                </ul>
+                <div class="rate-body">
+                    <div class="rate-content">
+                        <p class="rate-desc">Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
+                        <ul class="rate-guidelines">
+                            <li>Includes options for standard text layout, with or without mirror effects/shading.</li>
+                            <li>Extra text modifications or alternative layouts add a small fee.</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-container">
+                        <img src="DrawnArt (19).png" alt="Horizontal Logo Example" class="showcase-img">
+                    </div>
+                </div>
             </div>
 
             <div class="rate-section">
@@ -352,11 +419,19 @@
                     <h3>Hand-Drawn Art / PFPs</h3>
                     <p class="price">$XX</p>
                 </div>
-                <p class="rate-desc">100% custom illustration assets and stylized profile pictures with a unique edge.</p>
-                <ul class="rate-guidelines">
-                    <li>Prices scale up based on character count and detail complexity.</li>
-                    <li>Clear visual references are required upfront.</li>
-                </ul>
+                <div class="rate-body">
+                    <div class="rate-content">
+                        <p class="rate-desc">100% custom illustration assets and stylized profile pictures with a unique edge.</p>
+                        <ul class="rate-guidelines">
+                            <li>Prices scale up based on character count and detail complexity.</li>
+                            <li>Clear visual references are required upfront.</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-container dual">
+                        <img src="DrawnArt (10).png" alt="Drawn Art Example" class="showcase-img">
+                        <img src="PFP (1).png" alt="PFP Example" class="showcase-img">
+                    </div>
+                </div>
             </div>
 
             <div class="rate-section">
@@ -364,24 +439,40 @@
                     <h3>Thumbnails</h3>
                     <p class="price">$XX</p>
                 </div>
-                <p class="rate-desc">Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
-                <ul class="rate-guidelines">
-                    <li>Pricing scales per character and overall scene complexity.</li>
-                    <li>Building a custom set/environment incurs an extra charge.</li>
-                    <li>Clients must provide the specific world file or skin assets if applicable.</li>
-                </ul>
+                <div class="rate-body">
+                    <div class="rate-content">
+                        <p class="rate-desc">Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
+                        <ul class="rate-guidelines">
+                            <li>Pricing scales per character and overall scene complexity.</li>
+                            <li>Building a custom set/environment incurs an extra charge.</li>
+                            <li>Providing custom models incurs a small additional fee.</li>
+                            <li>Clients must provide the specific world file or skin assets if applicable.</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-container">
+                        <img src="Thumbnail (1).png" alt="Thumbnail Example" class="showcase-img">
+                    </div>
+                </div>
             </div>
 
             <div class="rate-section">
                 <div class="rate-header">
-                    <h3>3D Renders</h3>
+                    <h3>Minecraft 3D Renders</h3>
                     <p class="price">$XX</p>
                 </div>
-                <p class="rate-desc">High-quality custom scenes, lighting, and specialized character/item render configurations.</p>
-                <ul class="rate-guidelines">
-                    <li>Additional characters, props, or complex scene elements will increase the base price.</li>
-                    <li>Detailed references are required before rendering commences.</li>
-                </ul>
+                <div class="rate-body">
+                    <div class="rate-content">
+                        <p class="rate-desc">High-quality, dynamic Minecraft character renders featuring custom posing, lighting, and scene setups.</p>
+                        <ul class="rate-guidelines">
+                            <li>Additional characters, props, or complex scene elements will increase the base price.</li>
+                            <li>Including custom models incurs a small additional fee.</li>
+                            <li>Detailed character skin files or references are required before rendering.</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-container">
+                        <img src="Render (1).png" alt="Minecraft 3D Render Example" class="showcase-img">
+                    </div>
+                </div>
             </div>
 
             <div class="general-reqs">
