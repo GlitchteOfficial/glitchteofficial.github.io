@@ -162,38 +162,51 @@
             font-weight: 500;
         }
 
-        /* Rate Row Styling */
-        .rate-row {
+        /* Rate Section Styling */
+        .rate-section {
             background: rgba(17, 7, 34, 0.75);
             border: 1px solid rgba(192, 96, 255, 0.4);
-            padding: 22px 25px;
-            margin-bottom: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
             border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             transition: var(--transition-smooth);
+            display: flex;
+            gap: 20px;
+            align-items: center;
         }
 
-        .rate-row:hover {
+        .rate-section:hover {
             border-color: var(--accent-cyan);
             background: rgba(0, 255, 255, 0.04);
             box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
-            transform: translateY(-2px);
         }
 
-        .rate-row div h3 {
-            margin: 0 0 5px 0;
+        .rate-img {
+            width: 110px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            flex-shrink: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .rate-content {
+            flex-grow: 1;
+        }
+
+        .rate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .rate-header h3 {
+            margin: 0;
             color: var(--accent-cyan);
             font-size: 1.1rem;
             letter-spacing: 1px;
-        }
-
-        .rate-row div p {
-            margin: 0;
-            color: var(--text-body);
-            font-size: 0.88rem;
-            opacity: 0.85;
         }
 
         .price {
@@ -203,6 +216,78 @@
             margin: 0;
             letter-spacing: 1px;
             text-shadow: 0 0 8px rgba(255, 0, 85, 0.3);
+        }
+
+        .rate-desc {
+            margin: 0 0 12px 0;
+            color: var(--text-body);
+            font-size: 0.88rem;
+            opacity: 0.85;
+        }
+
+        /* Sub-guidelines inside sections */
+        .rate-guidelines {
+            list-style: none;
+            border-top: 1px dashed rgba(192, 96, 255, 0.25);
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .rate-guidelines li {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-body);
+            opacity: 0.9;
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .rate-guidelines li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
+            font-weight: bold;
+        }
+
+        /* General Requirements Box */
+        .general-reqs {
+            background: rgba(10, 4, 18, 0.9);
+            border: 1px dashed var(--accent-purple);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 30px;
+        }
+
+        .general-reqs h4 {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .general-reqs ul {
+            list-style: none;
+        }
+
+        .general-reqs li {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-body);
+            opacity: 0.85;
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .general-reqs li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-pink);
         }
 
         /* Footer */
@@ -229,10 +314,18 @@
             .commissions-card {
                 padding: 30px 20px;
             }
-            .rate-row {
+            .rate-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .rate-img {
+                width: 100%;
+                height: 140px;
+            }
+            .rate-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 12px;
+                gap: 6px;
             }
             .price {
                 align-self: flex-end;
@@ -252,47 +345,101 @@
 
     <div class="container">
         <div class="commissions-card">
-            <h2>Commission Pricing</h2>
+            <h2>Commission Pricing & Guidelines</h2>
             
-            <div class="rate-row">
-                <div>
-                    <h3>Main Logo (Square)</h3>
-                    <p>High impact, custom squared asset tailored for channel and profile branding.</p>
+            <!-- Square Logos -->
+            <div class="rate-section">
+                <img src="square_logo_sample.png" alt="Square Logo Sample" class="rate-img">
+                <div class="rate-content">
+                    <div class="rate-header">
+                        <h3>Main Logo (Square)</h3>
+                        <p class="price">$XX</p>
+                    </div>
+                    <p class="rate-desc">High impact, custom squared asset tailored for channel and profile branding.</p>
+                    <ul class="rate-guidelines">
+                        <li>Customization options: Full Logo (Shading + Text), No Shading, or No Text.</li>
+                        <li>Comes with a removable background.</li>
+                        <li>Additional complexity or extra elements will incur a small added fee.</li>
+                    </ul>
                 </div>
-                <p class="price">$XX</p>
             </div>
 
-            <div class="rate-row">
-                <div>
-                    <h3>Horizontal Logo</h3>
-                    <p>Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
+            <!-- Horizontal Logos -->
+            <div class="rate-section">
+                <img src="horizontal_logo_sample.png" alt="Horizontal Logo Sample" class="rate-img">
+                <div class="rate-content">
+                    <div class="rate-header">
+                        <h3>Horizontal Logo</h3>
+                        <p class="price">$XX</p>
+                    </div>
+                    <p class="rate-desc">Wide-format custom design ideal for banners, headers, and channel branding layouts.</p>
+                    <ul class="rate-guidelines">
+                        <li>Includes options for standard text layout, with or without mirror effects/shading.</li>
+                        <li>Extra text modifications or alternative layouts add a small fee.</li>
+                    </ul>
                 </div>
-                <p class="price">$XX</p>
             </div>
 
-            <div class="rate-row">
-                <div>
-                    <h3>Hand-Drawn Art / PFPs</h3>
-                    <p>100% custom illustration assets and stylized profile pictures with a unique edge.</p>
+            <!-- Hand-Drawn Art / PFPs -->
+            <div class="rate-section">
+                <img src="pfp_sample.png" alt="Hand-Drawn Art Sample" class="rate-img">
+                <div class="rate-content">
+                    <div class="rate-header">
+                        <h3>Hand-Drawn Art / PFPs</h3>
+                        <p class="price">$XX</p>
+                    </div>
+                    <p class="rate-desc">100% custom illustration assets and stylized profile pictures with a unique edge.</p>
+                    <ul class="rate-guidelines">
+                        <li>Prices scale up based on character count and detail complexity.</li>
+                        <li>Clear visual references are required upfront.</li>
+                    </ul>
                 </div>
-                <p class="price">$XX</p>
             </div>
 
-            <div class="rate-row">
-                <div>
-                    <h3>Thumbnails</h3>
-                    <p>Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
+            <!-- Thumbnails -->
+            <div class="rate-section">
+                <img src="thumbnail_sample.png" alt="Thumbnail Sample" class="rate-img">
+                <div class="rate-content">
+                    <div class="rate-header">
+                        <h3>Thumbnails</h3>
+                        <p class="price">$XX</p>
+                    </div>
+                    <p class="rate-desc">Eye-catching, professional custom thumbnails designed to maximize click-through rate.</p>
+                    <ul class="rate-guidelines">
+                        <li>Pricing scales per character and overall scene complexity.</li>
+                        <li>Building a custom set/environment incurs an extra charge.</li>
+                        <li>Clients must provide the specific world file or skin assets if applicable.</li>
+                    </ul>
                 </div>
-                <p class="price">$XX</p>
             </div>
 
-            <div class="rate-row">
-                <div>
-                    <h3>3D Renders</h3>
-                    <p>High-quality custom scenes, lighting, and specialized character/item render configurations.</p>
+            <!-- Minecraft Renders -->
+            <div class="rate-section">
+                <img src="render (1).png" alt="Minecraft Render Sample" class="rate-img">
+                <div class="rate-content">
+                    <div class="rate-header">
+                        <h3>Minecraft Renders</h3>
+                        <p class="price">$XX</p>
+                    </div>
+                    <p class="rate-desc">High-quality custom Minecraft scenes, custom lighting, and specialized character/item poses.</p>
+                    <ul class="rate-guidelines">
+                        <li>Additional characters, props, or complex scene blocks will increase the base price.</li>
+                        <li>Skin files and detailed pose references are required before rendering commences.</li>
+                    </ul>
                 </div>
-                <p class="price">$XX</p>
             </div>
+
+            <!-- General Requirements & Add-ons -->
+            <div class="general-reqs">
+                <h4>ORDER REQUIREMENTS & FEES</h4>
+                <ul>
+                    <li>References are strictly required for all orders to ensure accuracy.</li>
+                    <li>Excessive revision requests past standard allowances will incur a proportional extra fee.</li>
+                    <li>Full redesigns requested late in the process may be turned down or heavily billed.</li>
+                    <li>No requests involving overly complex items like intricate mechs or detailed armor.</li>
+                </ul>
+            </div>
+
         </div>
     </div>
 
