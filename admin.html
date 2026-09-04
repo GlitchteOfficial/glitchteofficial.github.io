@@ -31,7 +31,6 @@
             min-height: 100vh;
         }
 
-        /* Navigation */
         nav {
             background-color: rgba(6, 2, 12, 0.85);
             backdrop-filter: blur(12px);
@@ -57,7 +56,6 @@
 
         nav a:hover, nav a.active { color: var(--accent-cyan); }
 
-        /* Login Modal Overlay */
         .login-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -108,7 +106,6 @@
             display: none;
         }
 
-        /* Buttons */
         .btn-main {
             font-family: var(--font-mono);
             display: inline-block;
@@ -143,12 +140,11 @@
             box-shadow: 2px 2px 0px rgba(255, 0, 85, 0.8);
         }
 
-        /* Main Admin Dashboard Container */
         .admin-dashboard {
             max-width: 1100px;
             margin: 2rem auto;
             padding: 0 2rem;
-            display: none; /* Revealed upon successful login */
+            display: none;
         }
 
         .dashboard-header {
@@ -232,7 +228,6 @@
             word-break: break-all;
         }
 
-        /* Toggle Switch Styling */
         .toggle-container {
             display: flex;
             align-items: center;
@@ -289,7 +284,6 @@
         <a href="admin.html" class="active">Admin</a>
     </nav>
 
-    <!-- Password Modal -->
     <div class="login-overlay" id="loginModal">
         <div class="login-card">
             <h2>Admin Authentication</h2>
@@ -300,7 +294,6 @@
         </div>
     </div>
 
-    <!-- Admin Panel Interface -->
     <div class="admin-dashboard" id="adminDashboard">
         <div class="dashboard-header">
             <h1>Glitchte Control Center</h1>
@@ -309,7 +302,6 @@
 
         <div class="admin-grid">
             
-            <!-- Queue & Status Controls -->
             <div class="admin-card">
                 <h3>Commission Controls</h3>
                 
@@ -331,7 +323,6 @@
                 <button class="btn-main" onclick="saveQueueSettings()">Update Commission Settings</button>
             </div>
 
-            <!-- Global Analytics Tracker -->
             <div class="admin-card">
                 <h3>Website Visitor Stats</h3>
                 <p style="font-family: var(--font-mono); font-size: 0.8rem;">Global visits tracked via CounterAPI:</p>
@@ -339,7 +330,6 @@
                 <button class="btn-main" onclick="fetchGlobalViews()">Refresh Stats</button>
             </div>
 
-            <!-- 100th Visitor Log -->
             <div class="admin-card">
                 <h3>100th Visitor Reward Log</h3>
                 <p style="font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 10px;">Discord handle submitted by the 100th visitor:</p>
@@ -347,7 +337,6 @@
                 <button class="btn-main btn-danger" style="margin-top: 15px;" onclick="resetWinner()">Reset Winner Status</button>
             </div>
 
-            <!-- Announcement Ticker Control -->
             <div class="admin-card">
                 <h3>Announcement Ticker</h3>
                 <div class="control-group">
@@ -365,7 +354,6 @@
         const NAMESPACE = 'glitchte_portfolio';
         const KEY = 'site_views';
 
-        // Check if already authenticated in current session
         if (sessionStorage.getItem('admin_authenticated') === 'true') {
             showDashboard();
         }
@@ -392,7 +380,6 @@
             window.location.reload();
         }
 
-        // Fetch Global Views via CounterAPI
         async function fetchGlobalViews() {
             const display = document.getElementById('totalViewsDisplay');
             display.textContent = 'Fetching...';
@@ -405,21 +392,17 @@
             }
         }
 
-        // Load dashboard settings from localStorage
         function loadSettings() {
-            // Queue Settings
             const takenSlots = localStorage.getItem('comm_taken_slots') || '2';
             const status = localStorage.getItem('comm_open_status') !== 'false';
             document.getElementById('takenSlotsInput').value = takenSlots;
             document.getElementById('commStatusToggle').checked = status;
 
-            // 100th Visitor Handle
             const winner = localStorage.getItem('winner_100_handle');
             if (winner) {
                 document.getElementById('winnerHandleDisplay').textContent = `@${winner}`;
             }
 
-            // Banner Ticker
             const ticker = localStorage.getItem('ticker_text');
             if (ticker) {
                 document.getElementById('tickerTextInput').value = ticker;
