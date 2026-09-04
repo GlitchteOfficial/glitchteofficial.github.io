@@ -111,3 +111,270 @@
         }
 
         nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-pink);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-cyan);
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+            background-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Container & Card Layout */
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.3s forwards;
+            width: 100%;
+        }
+
+        .contact-card {
+            background: rgba(13, 6, 26, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            padding: 45px 35px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 255, 0.1);
+            width: 100%;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover {
+            border-color: rgba(0, 255, 255, 0.8);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 255, 255, 0.25);
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-card p {
+            color: var(--text-body);
+            font-size: 0.92rem;
+            margin-bottom: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Click-to-Copy Handle Box */
+        .discord-handle-box {
+            background: rgba(8, 3, 16, 0.7);
+            border: 1px solid rgba(192, 96, 255, 0.4);
+            padding: 16px;
+            border-radius: 6px;
+            margin: 25px 0 15px 0;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            user-select: none;
+        }
+
+        .discord-handle-box:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 255, 255, 0.05);
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Copy Feedback Tooltip */
+        .copy-feedback {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            margin-top: 6px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Status Section */
+        .status-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1.8rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .status-text {
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 !important;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(6, 2, 12, 0.9);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 255, 255, 0.15);
+            color: var(--text-body);
+            font-size: 0.85rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+            width: 100%;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 0.8rem 1.2rem;
+                padding: 0.8rem 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .contact-card {
+                padding: 30px 20px;
+            }
+
+            .tag {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            footer {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="showcase.html">Showcase</a>
+        <a href="commissions.html">Commissions</a>
+        <a href="tos.html">TOS</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <div class="container">
+        <div class="contact-card">
+            <h2>CONTACT ME ON DISCORD TO START YOUR WORK!</h2>
+            <p>Send a direct message request on Discord to begin your project layout and consultation.</p>
+            <p style="font-size: 0.85rem; opacity: 0.7;">Please use the "Add A Message" feature when sending a Friend Request!</p>
+            
+            <div class="discord-handle-box" onclick="copyDiscordTag()" title="Click to copy Discord handle">
+                <div class="tag" id="discordTag">glitchte</div>
+                <div class="copy-feedback" id="copyFeedback">[Click box to copy handle]</div>
+            </div>
+
+            <div>
+                <div class="status-container">
+                    <div class="status-dot"></div>
+                    <p class="status-text">Status: Open</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="mono-text">© 2026 Glitchte. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyDiscordTag() {
+            const tagText = document.getElementById("discordTag").innerText;
+            const feedback = document.getElementById("copyFeedback");
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(tagText).then(() => {
+                    showSuccess(feedback);
+                }).catch(() => {
+                    fallbackCopy(tagText, feedback);
+                });
+            } else {
+                fallbackCopy(tagText, feedback);
+            }
+        }
+
+        function fallbackCopy(text, feedbackElement) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";  
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showSuccess(feedbackElement);
+                } else {
+                    feedbackElement.innerText = "Failed to copy";
+                }
+            } catch (err) {
+                console.error('Fallback copy error', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showSuccess(feedbackElement) {
+            feedbackElement.innerText = "✓ Copied to clipboard!";
+            feedbackElement.style.color = "#ff0055";
+            
+            setTimeout(() => {
+                feedbackElement.innerText = "[Click box to copy handle]";
+                feedbackElement.style.color = "var(--accent-cyan)";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
