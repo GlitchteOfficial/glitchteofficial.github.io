@@ -55,7 +55,6 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Announcement Ticker Bar */
         .ticker-wrap {
             width: 100%;
             background-color: rgba(255, 0, 85, 0.15);
@@ -80,7 +79,6 @@
             100% { transform: translate3d(-100%, 0, 0); }
         }
 
-        /* Navigation */
         nav {
             background-color: rgba(6, 2, 12, 0.85);
             backdrop-filter: blur(12px);
@@ -120,7 +118,6 @@
         nav a:hover, nav a.active { color: var(--accent-cyan); }
         nav a:hover::after, nav a.active::after { width: 100%; background-color: var(--accent-cyan); }
 
-        /* Header */
         header {
             text-align: center;
             padding: 3rem 2rem 1.5rem;
@@ -143,7 +140,6 @@
             font-family: var(--font-mono);
         }
 
-        /* Commission Queue Batch Tracker */
         .queue-tracker-box {
             display: inline-flex;
             flex-direction: column;
@@ -185,7 +181,6 @@
             box-shadow: 0 0 8px var(--accent-pink);
         }
 
-        /* Hero Split */
         .hero-split {
             max-width: 1100px;
             margin: 0 auto;
@@ -244,7 +239,6 @@
             background: rgba(0, 255, 255, 0.15);
         }
 
-        /* Section Wrappers */
         .section-container {
             max-width: 1100px;
             margin: 4rem auto 0;
@@ -262,7 +256,6 @@
             padding-bottom: 8px;
         }
 
-        /* Process Steps Grid */
         .process-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -289,7 +282,6 @@
             font-size: 1.1rem;
         }
 
-        /* Mini Gallery Showcase */
         .mini-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -325,7 +317,6 @@
             margin-top: 8px;
         }
 
-        /* Reviews Rotating Box */
         .review-box {
             background: rgba(13, 6, 26, 0.85);
             border: 1px solid rgba(0, 255, 255, 0.4);
@@ -339,7 +330,6 @@
         .review-msg { font-style: italic; font-size: 0.95rem; margin-bottom: 8px; }
         .review-author { font-family: var(--font-mono); color: var(--accent-cyan); font-size: 0.85rem; }
 
-        /* 100th Viewer Popup Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -392,9 +382,8 @@
 </head>
 <body>
 
-    <!-- Scrolling Ticker -->
     <div class="ticker-wrap">
-        <div class="ticker">
+        <div class="ticker" id="tickerText">
             ANNOUNCEMENT: There are no active sales at the moment. Check back soon or follow Discord for surprise giveaways!
         </div>
     </div>
@@ -412,10 +401,9 @@
         <h1>glitchte</h1>
         <p>MULTIMEDIA DIGITAL ARTIST • DESIGN HUB</p>
         
-        <!-- Batch Queue Tracker Bar -->
         <div class="queue-tracker-box">
             <div class="queue-status-text" id="queueLabel">BATCH QUEUE: 2 / 5 SPOTS TAKEN</div>
-            <div class="queue-dots">
+            <div class="queue-dots" id="queueDots">
                 <span class="dot filled"></span>
                 <span class="dot filled"></span>
                 <span class="dot"></span>
@@ -439,7 +427,6 @@
         </div>
     </main>
 
-    <!-- Ordering Workflow Section -->
     <section class="section-container">
         <h3 class="section-title">How Ordering Works</h3>
         <div class="process-grid">
@@ -458,7 +445,6 @@
         </div>
     </section>
 
-    <!-- Mini Gallery Showcase -->
     <section class="section-container">
         <h3 class="section-title">Featured Creations</h3>
         <div class="mini-gallery">
@@ -484,7 +470,6 @@
         </div>
     </section>
 
-    <!-- Rotating Reviews Section -->
     <section class="section-container">
         <h3 class="section-title">Client Feedback</h3>
         <div class="review-box" id="reviewBox">
@@ -494,7 +479,6 @@
         </div>
     </section>
 
-    <!-- 100th Viewer Modal -->
     <div class="modal-overlay" id="winnerModal">
         <div class="modal-content">
             <h3>🎉 You are Visitor #100!</h3>
@@ -509,7 +493,46 @@
     </footer>
 
     <script>
-        // Global View Tracker using CounterAPI
+        function loadAdminData() {
+            const isStatusOpen = localStorage.getItem('comm_open_status') !== 'false';
+            const takenSlots = parseInt(localStorage.getItem('comm_taken_slots') || '2', 10);
+            const savedTicker = localStorage.getItem('ticker_text');
+
+            if (savedTicker) {
+                document.getElementById('tickerText').textContent = savedTicker;
+            }
+
+            const queueLabel = document.getElementById('queueLabel');
+            const dotsContainer = document.getElementById('queueDots');
+
+            if (!isStatusOpen) {
+                queueLabel.textContent = "COMMISSIONS CLOSED";
+                queueLabel.style.color = "var(--accent-pink)";
+                dotsContainer.innerHTML = '';
+                return;
+            }
+
+            queueLabel.textContent = `BATCH QUEUE: ${takenSlots} / 5 SPOTS TAKEN`;
+            queueLabel.style.color = "var(--accent-cyan)";
+
+            let dotsHTML = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < takenSlots) {
+                    dotsHTML += '<span class="dot filled"></span>';
+                } else {
+                    dotsHTML += '<span class="dot"></span>';
+                }
+            }
+            dotsContainer.innerHTML = dotsHTML;
+        }
+
+        // Listens live for changes made in admin.html in another tab
+        window.addEventListener('storage', (e) => {
+            if (['comm_taken_slots', 'comm_open_status', 'ticker_text'].includes(e.key)) {
+                loadAdminData();
+            }
+        });
+
         const NAMESPACE = 'glitchte_portfolio';
         const KEY = 'site_views';
 
@@ -520,7 +543,6 @@
                 
                 const totalViews = data.count;
 
-                // Trigger modal if global count reaches 100
                 if (totalViews === 100 && !localStorage.getItem('claimed_100')) {
                     document.getElementById('winnerModal').style.display = 'flex';
                 }
@@ -529,9 +551,9 @@
             }
         }
 
+        loadAdminData();
         trackGlobalViews();
 
-        // 100th Visitor Form Submission
         function submitWinner() {
             const handle = document.getElementById('discordInput').value;
             if (handle) {
@@ -542,7 +564,6 @@
             }
         }
 
-        // Rotating Reviews Script
         const reviews = [
             { stars: "★★★★★", msg: "Super fast delivery and the lighting on the 3D render was top notch!", author: "- @AlexRenders" },
             { stars: "★★★★★", msg: "Best quality logo I've bought for under $15. Will order again!", author: "- @ShadowV" },
